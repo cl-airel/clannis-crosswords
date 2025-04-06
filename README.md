@@ -1,4 +1,7 @@
-Welcome to our crossword collection! Here's our to-do list for us to reference:
+## Notes to Jannis:
+If you want to, create your own branch for development. Otherwise make modifications on preexisting dev branch and submit pull requests when they work. Add Live Server extension to VSCode for easy running and debugging without having to git push. <3
+
+## Welcome to our crossword collection! Here's our to-do list for us to reference:
 
 - [ ] Clues
 - [ ] Word numbers
