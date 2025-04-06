@@ -15,4 +15,5 @@ Welcome to our crossword collection! Here's our to-do list for us to reference:
 - [ ] Better title
 - [ ] Overall good ui
     - [ ] See nyt crosswords
-- [ ] Autocheck when grid is full 
+- [ ] Autocheck when grid is full
+- [ ] auto tab when filling in squares
