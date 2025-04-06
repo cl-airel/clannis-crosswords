@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Custom Crossword</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      padding: 2rem;
+      background-color: #f5f5f5;
+    }
+
+    #puzzle-container {
+      display: inline-grid;
+      grid-gap: 2px;
+      margin: 1rem auto;
+      background-color: #000;
+    }
+
+    .cell {
+      width: 40px;
+      height: 40px;
+      background-color: #fff;
+      border: none;
+      text-transform: uppercase;
+      font-size: 20px;
+      text-align: center;
+    }
+
+    .cell:focus {
+      outline: 2px solid #007acc;
+    }
+
+    .black-cell {
+      background-color: #000;
+    }
+
+    button {
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      background-color: #007acc;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #005e99;
+    }
+  </style>
+</head>
+<body>
+  <h1>🧩 My Crossword Puzzle</h1>
+  <div id="puzzle-container"></div>
+  <button id="check-answers">Check Answers</button>
+  <script src="crossword.js"></script>
+</body>
+</html>
