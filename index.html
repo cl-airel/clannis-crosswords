@@ -14,28 +14,38 @@
     }
 
     #puzzle-container {
-      display: inline-grid;
-      grid-gap: 2px;
-      margin: 1rem auto;
-      background-color: #000;
-    }
+        display: grid;
+        grid-gap: 1px; /*optional spacing between cells */
+        justify-content: center; /* or center if you want it centered */
+        align-items: center;
+        width: fit-content; /*max-content; /* 🔥 ensures it expands to fit the puzzle */
+        padding: 9px;
+        background-color: #6ba68c;
+        margin: auto; /* Centers the grid container horizontally and vertically */
+      
+      }
 
-    .cell {
-      width: 40px;
-      height: 40px;
-      background-color: #fff;
-      border: none;
-      text-transform: uppercase;
-      font-size: 20px;
-      text-align: center;
+    .cell, .black-cell {
+        width: 40px;
+        height: 40px;
+        border: none /*1px solid #beaeec*/;
+        font-size: 20px;
+        text-align: center;
+        box-sizing: border-box;
+        line-height: 40px;
     }
 
     .cell:focus {
-      outline: 2px solid #007acc;
+        outline: 2px solid #007acc;
+    }
+
+    .cell {
+        background-color: #fff;
+        text-transform: uppercase;
     }
 
     .black-cell {
-      background-color: #000;
+        background-color: #000;
     }
 
     button {
