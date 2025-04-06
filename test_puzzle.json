@@ -1,0 +1,28 @@
+{
+    "title": "My First Puzzle",
+    "size": { "rows": 5, "cols": 5 },
+    "grid": [
+      ["", "", "", "", ""],
+      ["", "■", "", "■", ""],
+      ["", "", "", "", ""],
+      ["", "■", "", "■", ""],
+      ["", "", "", "", ""]
+    ],
+    "clues": {
+      "across": {
+        "1": "First letter of the alphabet",
+        "3": "Opposite of yes"
+      },
+      "down": {
+        "1": "Used to write",
+        "2": "Day before today"
+      }
+    },
+    "solution": [
+      ["A", "B", "C", "D", "E"],
+      ["F", "", "G", "", "H"],
+      ["I", "J", "K", "L", "M"],
+      ["N", "", "O", "", "P"],
+      ["Q", "R", "S", "T", "U"]
+    ]
+  }
