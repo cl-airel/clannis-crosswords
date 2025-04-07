@@ -1,69 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- This is for the header of the website and metadata (don't ask)-->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Custom Crossword</title>
   <link rel="stylesheet" href="style.css" />
-  <style>
-    body {
-      font-family: sans-serif;
-      text-align: center;
-      padding: 2rem;
-      background-color: #f5f5f5;
-    }
-
-    #puzzle-container {
-        display: grid;
-        grid-gap: 1px; /*optional spacing between cells */
-        justify-content: center; /* or center if you want it centered */
-        align-items: center;
-        width: fit-content; /*max-content; /* 🔥 ensures it expands to fit the puzzle */
-        padding: 9px;
-        background-color: #6ba68c;
-        margin: auto; /* Centers the grid container horizontally and vertically */
-      
-      }
-
-    .cell, .black-cell {
-        width: 40px;
-        height: 40px;
-        border: none /*1px solid #beaeec*/;
-        font-size: 20px;
-        text-align: center;
-        box-sizing: border-box;
-        line-height: 40px;
-    }
-
-    .cell:focus {
-        outline: 2px solid #007acc;
-    }
-
-    .cell {
-        background-color: #fff;
-        text-transform: uppercase;
-    }
-
-    .black-cell {
-        background-color: #000;
-    }
-
-    button {
-      padding: 0.5rem 1rem;
-      font-size: 1rem;
-      background-color: #007acc;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background-color: #005e99;
-    }
-  </style>
 </head>
+
 <body>
+<!-- This is where the body of our webpage exists -->
   <h1>🧩 My Crossword Puzzle</h1>
   <div id="puzzle-container"></div>
   <button id="check-answers">Check Answers</button>

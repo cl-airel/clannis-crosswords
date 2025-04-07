@@ -1,10 +1,13 @@
+// Main file that loads all of the puzzles n whatnot
+
 async function loadPuzzle() {
-    const response = await fetch('puzzle-archive/test_puzzle.json');
-    const puzzle = await response.json();
+//loads puzzles from puzzle-archive folder
+  const response = await fetch('puzzle-archive/test_puzzle.json');
+  const puzzle = await response.json();
   
-    renderPuzzle(puzzle);
-    setupChecker(puzzle);
-  }
+  renderPuzzle(puzzle);
+  setupChecker(puzzle);
+}
   
   function renderPuzzle(puzzle) {
     const container = document.getElementById("puzzle-container");
@@ -13,7 +16,7 @@ async function loadPuzzle() {
     puzzle.grid.forEach((row, rowIndex) => {
       row.forEach((cell, colIndex) => {
         const input = document.createElement("input");
-        if (cell === "■") {
+        if (cell === "#") {
           input.classList.add("black-cell");
           input.disabled = true;
         } else {
