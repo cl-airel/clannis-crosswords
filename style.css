@@ -5,6 +5,11 @@ body {
     background-color: #f5f5f5;
 }
 
+ul { 
+    list-style-type: none;
+    padding: 5px;
+}
+
 #puzzle-container {
     display: grid;
     grid-gap: 1px; /*optional spacing between cells */
@@ -16,6 +21,14 @@ body {
     margin: auto; /* Centers the grid container horizontally and vertically */
     
     }
+
+#clue-section {
+    background-color: #fff
+}
+
+.header-background{
+    background-color: #959292;
+}
 
 .cell, .black-cell {
     width: 40px;
@@ -39,8 +52,6 @@ body {
 .black-cell {
     background-color: #000;
 }
-
-
 
 button {
     padding: 0.5rem 1rem;

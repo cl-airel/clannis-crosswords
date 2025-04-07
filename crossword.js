@@ -7,6 +7,7 @@ async function loadPuzzle() {
   
   renderPuzzle(puzzle);
   setupChecker(puzzle);
+  displayClues(puzzle);
 }
   
   function renderPuzzle(puzzle) {
@@ -50,6 +51,23 @@ async function loadPuzzle() {
       });
   
       if (allCorrect) alert("🎉 You solved it!");
+    });
+  }
+
+  function displayClues(puzzle) {
+    const acrossList = document.getElementById("across-clues");
+    const downList = document.getElementById("down-clues");
+  
+    puzzle.clues.across.forEach(({ number, clue }) => {
+      const li = document.createElement("li");
+      li.textContent = `${number}. ${clue}`;
+      acrossList.appendChild(li);
+    });
+  
+    puzzle.clues.down.forEach(({ number, clue }) => {
+      const li = document.createElement("li");
+      li.textContent = `${number}. ${clue}`;
+      downList.appendChild(li);
     });
   }
   
