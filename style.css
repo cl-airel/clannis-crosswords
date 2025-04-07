@@ -10,24 +10,41 @@ ul {
     padding: 5px;
 }
 
+#main-section{
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+    margin-top: 1rem;
+}
+
 #puzzle-container {
     display: grid;
     grid-gap: 1px; /*optional spacing between cells */
-    justify-content: center; /* or center if you want it centered */
+    justify-content: center;
     align-items: center;
-    width: fit-content; /*max-content; /* 🔥 ensures it expands to fit the puzzle */
+    width: max-content; /* 🔥 ensures it expands to fit the puzzle */
     padding: 9px;
     background-color: #6ba68c;
-    margin: auto; /* Centers the grid container horizontally and vertically */
-    
+    margin: auto;
     }
 
 #clue-section {
-    background-color: #fff
+    background-color: #fff;
+    float: right;
+    max-width: fit-content;
+    margin: auto;
+}
+
+#side-section {
+    background-color: #fff;
+    float: left;
+    max-width: fit-content;
+    margin: auto;
 }
 
 .header-background{
     background-color: #959292;
+    margin-top: 0;
 }
 
 .cell, .black-cell {
