@@ -3,8 +3,8 @@ If you want to, create your own branch for development. Otherwise make modificat
 
 ## Welcome to our crossword collection! Here's our to-do list for us to reference:
 
-- [ ] Clues
-- [ ] Word numbers
+- [x] Clues
+- [x] Word numbers
 - [ ] Scraper for the excel files
 - [ ] Reset
 - [ ] Username input 
