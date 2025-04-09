@@ -6,14 +6,16 @@ If you want to, create your own branch for development. Otherwise make modificat
 - [x] Clues
 - [x] Clue numbers
 - [ ] Quality of life updates
-    - [ ] auto move to next square after input
-    - [ ] highlighting the entire word and corresponding clue
+    - [x] auto move to next square after input
+    - [ ] fix auto move to wrap around
+    - [x] highlighting the entire word and corresponding clue
     - [x] autocheck when grid is full
+    - [ ] default to only highlighting words
 - [ ] Scraper for the excel files
 - [x] Reset button
 - [ ] Username input
     - [ ] records time and displays on leaderboard for the day
-- [ ] Timer 
+- [x] Timer 
     - [ ] Penalty for checking answers before finishing
 - [ ] Leaderboard
     - [ ] daily score
