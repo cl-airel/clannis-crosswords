@@ -1,8 +1,18 @@
+@font-face {
+    font-family: "TreasureMapDeadhand";
+    src: url('treasure-map-deadhand-font/TreasureMapDeadhand-yLA3.ttf') format('truetype');
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 body {
-    font-family: sans-serif;
     text-align: center;
-    padding: 2rem;
     background-color: #f5f5f5;
+    font-family: sans-serif;
 }
 
 ul { 
@@ -10,59 +20,433 @@ ul {
     padding: 5px;
 }
 
+.banner {
+    display: block;
+    width: 100%;
+    margin: 0;
+}
+
+.titlepage {
+    font-family: TreasureMapDeadhand;
+    text-align: center;
+    font-size: 5vw;
+    margin-bottom: 5px;
+}
+
+.left-side {
+    width: 60%;
+    margin: 10px;
+}
+
+#puzzle-toolbar {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5px;
+    background: #6ba68c;
+    border-radius: 6px;
+    width: 100%;
+  }
+  
+  #puzzle-toolbar button {
+    height: 100%;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    font-size: 1em;
+    cursor: pointer;
+    border: none;
+    border-radius: 6px;
+    background-color: #0d794a;
+    color: white;
+    transition: background-color 0.2s;
+    margin: 7px;
+  }
+  
+  #puzzle-toolbar button:hover {
+    background-color: #073622;
+  }
+
+#main-section{
+    display: flex-inline;
+    align-items: flex-start;
+    justify-content: center;
+    margin: 0px;
+    width: 100%;
+}
+
+.puzzle-area {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    width: 100%;
+    margin: auto;
+}
+
 #puzzle-container {
     display: grid;
-    grid-gap: 1px; /*optional spacing between cells */
-    justify-content: center; /* or center if you want it centered */
+    gap: 2px;
+    justify-content: center;
     align-items: center;
-    width: fit-content; /*max-content; /* 🔥 ensures it expands to fit the puzzle */
-    padding: 9px;
+    width: 100%;
+    padding: 15px;
     background-color: #6ba68c;
-    margin: auto; /* Centers the grid container horizontally and vertically */
-    
+    margin: 0px;
+    grid-template-columns: repeat(var(--cols), 1fr);
+    grid-template-rows: repeat(var(--rows), 1fr); 
+    border-radius: 6px;
     }
 
 #clue-section {
-    background-color: #fff
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin: auto 10px auto 5px;
+    border-radius: 6px;
+    width: 35%;
+    padding: 10px;
+}
+
+#down-clues, #across-clues {
+    flex-grow: 1;
+    overflow-y: auto;
+    background-color: #dfe4df;
+    margin-bottom: 5px;
+    border-radius: 0px 0px 6px 6px;
+    padding: 10px;
+}
+
+#down-clues li, #across-clues li {
+    visibility: hidden;
+    margin-bottom: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    text-align: left;
+    list-style-position: inside;
+}
+
+/*#down-clues li.visible, #across-clues li.visible {
+    opacity: 1;
+}*/
+
+#down-clues li:hover, #across-clues li:hover {
+    background-color: #f0f0f0;
+}
+
+.highlighted-clue {
+    background-color: #a6e9cc;
+    font-weight: bold;
+  }
+
+.highlighted {
+    background-color: #a6e9cc !important; /* bright yellow */
+}
+
+.navbar {
+    background: #000;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    margin-top: 0;
+    z-index: 999;
+}
+
+.navbar__container {
+    display: flex;
+    justify-content: space-between;
+    height: 80px;
+    z-index: 1;
+    width: 100%;
+    max-width: 1300px;
+    margin: 0;
+    padding: 0 50px;
+}
+
+#navbar__logo {
+    background: #1779ad;
+    background-image: linear-gradient(to top, #ff0804 0%, #ffb1 100%);
+    background-size: 100%;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 2rem;
+
+}
+
+/*.fa-gem {
+    margin-right: 0.5rem;
+}*/
+
+.navbar__menu {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    text-align: center;
+    gap: 20px;
+}
+
+.navbar__item {
+    height: 80px;
+}
+
+.navbar__links {
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    padding: 0 1rem;
+    height: 100%;
+    font-family: "TreasureMapDeadhand";
+    font-size: 30px;
+}
+
+.navbar__home {
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    text-decoration: none;
+    margin-left: 30px;
+    height: 100%;
+    font-family: "TreasureMapDeadhand";
+    font-size: 40px;
+}
+
+.navbar__bttn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.nav__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    font-family: "TreasureMapDeadhand";
+    font-size: 30px;
+    padding: 10px 15px;
+    height: 100%;
+    width: 150px;
+    border: none;
+    outline: none;
+    border-radius: 6px;
+    background: #6ba68c;
+    color: #fff;
+}
+
+.nav__button:hover {
+    background: #3f7b62;
+    transition: all 0.3s ease;
+}
+
+.navbar__links:hover {
+    color: #3f7b62;
+    transition: all 0.3s ease;
 }
 
 .header-background{
-    background-color: #959292;
+    background-color: #6ba68c;
+    margin-top: 0;
+    font-family: "TreasureMapDeadhand";
+    font-size: 25px;
+    padding: 10px;
+    border-radius: 6px 6px 0px 0px;
 }
 
+.row {
+    display: flex;
+  }
+
 .cell, .black-cell {
-    width: 40px;
-    height: 40px;
+    position: relative;
+    width: 100%;
+    height: 100%;
     border: none /*1px solid #beaeec*/;
-    font-size: 20px;
+    font-size: 30px;
     text-align: center;
     box-sizing: border-box;
-    line-height: 40px;
 }
 
 .cell:focus {
-    outline: 2px solid #007acc;
+    outline: 3px solid #235e44;
 }
 
 .cell {
     background-color: #fff;
     text-transform: uppercase;
+    color: #000;
 }
 
 .black-cell {
     background-color: #000;
 }
 
-button {
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    background-color: #007acc;
-    color: white;
+.cell-input {
+    width: 100%;
+    height: 100%;
+    text-align: center;
     border: none;
-    border-radius: 4px;
-    cursor: pointer;
+    outline: none;
+    background-color: #fff;
+  }
+  
+.clue-number {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    font-size: calc(0.5em + 2vw);
+    color: black;
+    z-index: 10;
+  }
+
+.cell-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 1 / 1;
 }
 
-button:hover {
-    background-color: #005e99;
+@media screen and (max-width: 800px) {
+    .navbar__container {
+        display:flex;
+        justify-content: space-between;
+        height: 80px;
+        z-index: 1;
+        width: 100%;
+        max-width: 1300px;
+        padding: 0;
+    }
+
+    .navbar__menu {
+        display: grid;
+        grid-template-columns: auto;
+        margin: 0;
+        width: 100%;
+        position: absolute;
+        top: -1000px;
+        opacity: 0;
+        transition: all 0.5s ease;
+        height: 50vh;
+        z-index: -1;
+        background-color: #131313;
+    }
+
+    .navbar__menu.active {
+        background-color: #131313;
+        top: 100%;
+        opacity: 1;
+        transition: all 0.5s ease;
+        z-index: 99;
+        height: 60vh;
+        font-size: 1.6rem;
+    }
+
+    #navbar__logo {
+        padding-left: 25px;
+    }
+
+    .navbar__toggle .bar {
+        width: 25px;
+        height: 3px;
+        margin: 5px auto;
+        transition: all 0.3s ease-in-out;
+        background: #fff;
+    }
+
+    .navbar__item {
+        width: 100%;
+    }
+
+    .navbar__links {
+        text-align: center;
+        padding: 2rem;
+        width: 100%;
+        display: table;
+    }
+
+    #mobile-menu {
+        position: absolute;
+        top: 20%;
+        right: 5%;
+        transform: translate(5%, 20%);
+    }
+
+    .navbar__bttn {
+        padding-bottom: 2rem;
+    }
+
+    .nav__button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 80%;
+        height: 80px;
+        margin: 0;
+    }
+
+    .navbar__toggle .bar {
+        display: block;
+        cursor: pointer;
+    }
+
+    #mobile-menu.is-active .bar:nth-child(2) {
+        opacity: 0;
+    }
+    #mobile-menu.is-active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    #mobile-menu.is-active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    .left-side {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 90vw;
+        margin: auto;
+        flex-grow: 1;
+    }
+
+    .puzzle-area{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 90vw;
+        /*max-width: 1000px;
+        min-width: 400px;*/
+        margin: auto;
+        flex-grow: 1;
+    }
+
+    #puzzle-container {
+        width: 90%;
+        padding: 10px;
+        margin: 5px;
+        }
+
+    #clue-section {
+        width: 90%;
+        margin: 0px;
+        padding: 0px;
+    }
+
+    #puzzle-toolbar {
+        width: 100%;
+        margin: 5px 0px;
+    }
+
+    .titlepage {
+        display: none;
+    }
 }
