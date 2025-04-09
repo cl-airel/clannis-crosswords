@@ -421,16 +421,16 @@ function toggleClues(show) {
 document.getElementById('play-button').addEventListener('click', function() {
   const icon = document.getElementById('icon')
 
-  timerRunning = !timerRunning;
+  //timerRunning = !timerRunning;
 
   if (timerRunning) {
-    startTimer();
-    toggleClues(true); 
-    icon.innerHTML = "&#10074;&#10074;";
-  } else {
     stopTimer();
+    toggleClues(false); 
     icon.innerHTML = '&#9658';
-    toggleClues(false);
+  } else {
+    startTimer();
+    icon.innerHTML = "&#10074;&#10074;";
+    toggleClues(true);
      }
 });
 
