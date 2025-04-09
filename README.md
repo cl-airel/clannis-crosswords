@@ -4,19 +4,30 @@ If you want to, create your own branch for development. Otherwise make modificat
 ## Welcome to our crossword collection! Here's our to-do list for us to reference:
 
 - [x] Clues
-- [x] Word numbers
+- [x] Clue numbers
+- [ ] Quality of life updates
+    - [ ] auto move to next square after input
+    - [ ] highlighting the entire word and corresponding clue
+    - [x] autocheck when grid is full
 - [ ] Scraper for the excel files
-- [ ] Reset
+- [x] Reset button
 - [ ] Username input 
 - [ ] Timer 
     - [ ] Penalty for checking answers before finishing
 - [ ] Leaderboard
-- [ ] Top and side banner
-- [ ] Ads on the bottom
-- [ ] Archive
-- [ ] Special puzzles
-- [ ] Better title
+- [x] Top banner
+    - [ ] about me page
+    - [ ] Archive
+    - [ ] Special puzzles
+    - [ ] acknowledgements
+- [ ] Better title/banner
 - [ ] Overall good ui
     - [ ] See nyt crosswords
-- [ ] Autocheck when grid is full
-- [ ] auto tab when filling in squares
+- [ ] space for 3 rotating ads below xword
+    - [ ] button to remove ad and have it return in 5 seconds
+- [ ] misc. easter eggs
+    - [ ] hidden button that leads to more of our gpt ship imgs
+    - [ ] crewmates ad leads to something but other ads
+    - [ ] something cool with the kraken
+    - [ ] night mode with scary stuff
+    - [ ] shout out to emily (lost and found ad)
