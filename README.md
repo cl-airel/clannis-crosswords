@@ -20,6 +20,8 @@ If you want to, create your own branch for development. Otherwise make modificat
 - [ ] Leaderboard
     - [ ] daily score
     - [ ] all time?
+    - [ ] avatars
+    - [ ] sign in button functionallity
 - [x] Top banner
     - [ ] about me page
     - [ ] Archive
@@ -30,6 +32,7 @@ If you want to, create your own branch for development. Otherwise make modificat
     - [ ] See nyt crosswords
 - [ ] space for 3 rotating ads below xword
     - [ ] button to remove ad and have it return in 5 seconds
+- [ ] music
 - [ ] misc. easter eggs
     - [ ] hidden button that leads to more of our gpt ship imgs
     - [ ] crewmates ad leads to something but other ads
