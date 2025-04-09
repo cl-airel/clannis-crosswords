@@ -11,10 +11,13 @@ If you want to, create your own branch for development. Otherwise make modificat
     - [x] autocheck when grid is full
 - [ ] Scraper for the excel files
 - [x] Reset button
-- [ ] Username input 
+- [ ] Username input
+    - [ ] records time and displays on leaderboard for the day
 - [ ] Timer 
     - [ ] Penalty for checking answers before finishing
 - [ ] Leaderboard
+    - [ ] daily score
+    - [ ] all time?
 - [x] Top banner
     - [ ] about me page
     - [ ] Archive
