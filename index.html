@@ -10,25 +10,64 @@
 
 <body>
 <!-- This is where the body of our webpage exists -->
-  <img src="download.jpg" alt="really cool banner">
-  <div id="main-section">
-    <div id="side-section">
-      <h3 class="header-background">Most Booty Plundered</h3>
-      <ul>
-        <li>username</li>
-        <li>this will probably work best as a table</li>
+  <img class="banner" src="banner-example.png" alt="really cool banner">
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="navbar__container">
+      <a href="/" class="navbar__home">Home</a>
+
+      <div class="navbar__toggle" id="mobile-menu">
+        <span class="bar"></span> <span class="bar"></span> <span class="bar"></span>
+      </div>
+      <ul class="navbar__menu">
+        <li class="navbar__item">
+          <a href="/archive.html" class="navbar__links">Archive</a>
+        </li>
+        <li class="navbar__item">
+          <a href="/specialpuzzles.html" class="navbar__links">Special Puzzles</a>
+        </li>
+        <li class="navbar__item">
+          <a href="/aboutus.html" class="navbar__links">About Us</a>
+        </li>
+        <li class="navbar__bttn">
+          <a href="/" class="nav__button">Sign In</a>
+        </li>
       </ul>
     </div>
-    <div id="puzzle-container"></div>
-    <div id="clue-section">
-        <h3 class="header-background">Across</h3>
-        <ul id="across-clues"></ul>
-        <h3 class="header-background">Down</h3>
-        <ul id="down-clues"></ul>
-        <button id="check-answers">Check Answers</button>
-        <button id="reset" onClick="refreshPage()">Reset</button>
+  </nav>
+
+  <!-- Main Content -->
+  <div id="main-section">
+    <div class="puzzle-area">
+        <div class="left-side">
+          <div id="puzzle-container"></div>
+        </div>
+      <div id="clue-section">
+        <h1 class="titlepage">Today's Puzzle</h1>
+        <div id="puzzle-toolbar">
+          <button id="play-button">
+            <span id="icon">&#9658;</span> 
+            <span id="timer">00:00</span>
+          </button>
+          <button id="check-answers">Check</button>
+  
+          <button id="reset">Reset</button>
+        </div>
+        <div class="across-clues">
+          <h3 class="header-background">Across</h3>
+          <ul id="across-clues" ></ul>
+        </div>
+
+        <div class="down-clues"> 
+          <h3 class="header-background">Down</h3>
+          <ul id="down-clues"></ul>
+        </div>
+      </div>
     </div>
+    <img src="ad-example.png" alt="This is an ad" style="width:90vw;margin:10px">
   </div>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
   <script src="crossword.js"></script>
 </body>
 </html>
