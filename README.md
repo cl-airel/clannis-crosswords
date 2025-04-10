@@ -1,27 +1,41 @@
 ## Notes to Jannis:
 If you want to, create your own branch for development. Otherwise make modifications on preexisting dev branch and submit pull requests when they work. Add Live Server extension to VSCode for easy running and debugging without having to git push. <3
 
+## Goals to hit before beta release:
+- [ ] archive with one puzzle
+- [ ] welcome message
+- [ ] display username on page
+- [ ] record time of completion with username
+- [ ] daily leaderboard
+- [ ] fix cell movement
+- [ ] rotating ads
+- [ ] top banner
+- [ ] about me page
+
 ## Welcome to our crossword collection! Here's our to-do list for us to reference:
 
 - [x] Clues
 - [x] Clue numbers
+- [ ] archive with one puzzle
 - [ ] Quality of life updates
     - [x] auto move to next square after input
     - [ ] fix auto move to wrap around
     - [x] highlighting the entire word and corresponding clue
     - [x] autocheck when grid is full
     - [ ] default to only highlighting words
+    - [ ] auto record time when finished
 - [ ] Scraper for the excel files
 - [x] Reset button
-- [ ] Username input
+- [x] Username input
     - [ ] records time and displays on leaderboard for the day
+    - [ ] display username somewhere
 - [x] Timer 
     - [ ] Penalty for checking answers before finishing
 - [ ] Leaderboard
     - [ ] daily score
     - [ ] all time?
     - [ ] avatars
-    - [ ] sign in button functionallity
+    - [x] sign in button functionallity
 - [x] Top banner
     - [ ] about me page
     - [ ] Archive
