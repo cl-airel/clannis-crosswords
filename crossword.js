@@ -10,6 +10,15 @@ function closeNav() {
 const menu = document.querySelector('#mobile-menu');
 const menuLinks = document.querySelector('.navbar__menu');
 
+var modal = document.getElementById('id01');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
 let lastClickedCell = null;
 let lastDirection = "across";
 
@@ -204,10 +213,16 @@ function handleInput(e) {
 
   input.style.color = 'black';
   input.style.backgroundColor = '';
+
   checkAnswers();
 
-  if (value.length > 0) {
+  if (value) {
     moveToNextCell(currentRow, currentCol, currentDirection);
+  //}
+
+    if (isCurrentWordComplete(currentRow, currentCol, currentDirection)) {
+      moveToNextWord(currentRow, currentCol, currentDirection);
+    }
   }
 
   if (currentRow !== null && currentCol !== null) {
@@ -215,9 +230,88 @@ function handleInput(e) {
   }
 }
 
+function isCurrentWordComplete(row, col, direction, puzzle) {
+  let [dRow, dCol] = direction === 'across' ? [0, 1] : [1, 0];
+  let currentRow = row;
+  let currentCol = col;
+
+  // Check all cells in the word
+  while (isValidCell(currentRow, currentCol, puzzle) && puzzle.grid[currentRow][currentCol] !== '#') {
+    const cell = document.querySelector(`input[data-row="${currentRow}"][data-col="${currentCol}"]`);
+    if (cell && !cell.value) { // If there's an empty cell, the word is not complete
+      return false;
+    }
+    currentRow += dRow;
+    currentCol += dCol;
+  }
+
+  // If no empty cells were found, the word is complete
+  return true;
+}
+
+function moveToNextWord(puzzle) {
+  const currentClue = findCurrentClue(currentRow, currentCol, currentDirection, puzzle);
+  let nextClue = getNextClue(currentClue, puzzle);
+
+  if (nextClue) {
+    focusFirstEmptyCell(nextClue.row, nextClue.col, nextClue.direction, puzzle);
+  }
+}
+
+// Find the current clue for the given cell
+function findCurrentClue(row, col, direction, puzzle) {
+  const clues = direction === 'across' ? puzzle.clues.across : puzzle.clues.down;
+  return clues.find(clue => clue.row === row && clue.col === col);
+}
+
+// Get the next clue (across or down) after the current one
+function getNextClue(currentClue, puzzle) {
+  const clues = currentClue.direction === 'across' ? puzzle.clues.across : puzzle.clues.down;
+  const currentIndex = clues.indexOf(currentClue);
+
+  // Look for the next clue in the list
+  if (currentIndex !== -1 && currentIndex + 1 < clues.length) {
+    return clues[currentIndex + 1]; // Return the next clue
+  }
+
+  return null; // No next clue found
+}
+
+//semi-working
 function handleKeyDown(e) {
-  if (e.key ==='Backspace') {
-    moveToPreviousCell(currentRow, currentCol, currentDirection);
+  const input = e.target;
+  const row = parseInt(input.dataset.row);
+  const col = parseInt(input.dataset.col);
+
+  // Handle Backspace
+  if (e.key === 'Backspace') {
+    if (input.value === '') {
+      moveToPreviousCell(row, col, currentDirection);
+    } else {
+      input.value = '';
+      e.preventDefault(); // prevent default backspace behavior
+    }
+  }
+
+  // Arrow Key Navigation
+  const directions = {
+    ArrowLeft: [0, -1],
+    ArrowRight: [0, 1],
+    ArrowUp: [-1, 0],
+    ArrowDown: [1, 0]
+  };
+
+  if (directions[e.key]) {
+    e.preventDefault();
+    const [dRow, dCol] = directions[e.key];
+    const nextInput = document.querySelector(
+      `input[data-row="${row + dRow}"][data-col="${col + dCol}"]`
+    );
+    if (nextInput && !nextInput.classList.contains("black-cell")) {
+      nextInput.focus();
+      currentRow = row + dRow;
+      currentCol = col + dCol;
+    }
   }
 }
 
@@ -285,21 +379,21 @@ function moveToPreviousCell(row, col, direction) {
     }
   }
 //everything works at this point
-  function focusFirstEmptyCell(startRow, startCol, direction, puzzle) {
-    let r = startRow, c = startCol;
+  function focusFirstEmptyCell(row, col, direction, puzzle) {
+    let [dRow, dCol] = direction === 'across' ? [0, 1] : [1, 0];
+    let currentRow = row;
+    let currentCol = col;
   
-    while (r < puzzle.size.rows && c < puzzle.size.cols) {
-      const cell = document.querySelector(`input[data-row="${r}"][data-col="${c}"]`);
-      setCurrentClue(r, c, direction);
-      if (cell && !cell.disabled && cell.value === "") {
+    // Move to the first empty cell
+    while (isValidCell(currentRow, currentCol, puzzle) && puzzle.grid[currentRow][currentCol] !== '#') {
+      const cell = document.querySelector(`input[data-row="${currentRow}"][data-col="${currentCol}"]`);
+      if (cell && !cell.value) { // First empty cell found
         cell.focus();
-        highlightWord(r, c, direction, puzzle);
         return;
       }
-      if (direction === "across") c++;
-      else r++;
+      currentRow += dRow;
+      currentCol += dCol;
     }
-    
   }
   //where everything was so cool!!!
   function highlightWord(row, col, direction, puzzle) {
@@ -439,3 +533,10 @@ document.getElementById('reset').addEventListener('click', resetPuzzle)
 
 // Load the puzzle when the page loads
 loadPuzzle();
+
+async function getUsernames() {
+  const querySnapshot = await getDocs(collection(db, "users"));
+  querySnapshot.forEach((doc) => {
+    console.log(doc.id, " => ", doc.data().username); // Logs each user's ID and username
+  });
+}
