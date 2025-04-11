@@ -78,7 +78,20 @@ input[type=text]{
     background-color: white;
   }
 
+table, td, th {
+    border: 1px solid;
+}
 
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
 
   .modal {
     display: none; /* Hidden by default */

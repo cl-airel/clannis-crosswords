@@ -16,6 +16,14 @@ export function startTimer() {
 export function stopTimer() {
   clearInterval(timerInterval);
   timerRunning = false;
+  toggleClues(false); 
+  icon.innerHTML = '&#9658;';
+}
+
+export function resetTimer() {
+  clearInterval(timerInterval);
+  timerRunning = false;
+  timeElapsed = 0;
 }
 
 export function isTimerRunning() {

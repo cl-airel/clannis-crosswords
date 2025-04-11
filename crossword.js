@@ -11,6 +11,8 @@ import { startTimer, stopTimer, updateTimer, isTimerRunning, getElapsedTime } fr
 import { loadPuzzle, highlightWord, focusFirstEmptyCell, highlightClueForCell } from './puzzle.js'
 import { addAutoCheckListeners } from './inputHandlers.js';
 import { gameState } from './gameState.js'
+import { collection, addDoc, getDocs, query, orderBy, limit, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
+import { db } from "./init-firestore.js"
 
 export function setupChecker() {
   document.getElementById("check-answers").addEventListener("click", () => {
@@ -98,7 +100,7 @@ submitButton.addEventListener('click', function(event) {
 });
 
 //==CHECK, RESET, and SAVE==//
-export function checkAnswers() {
+export async function checkAnswers() {
   const inputs = document.querySelectorAll('.cell:not(.black-cell)');
   let allFilled = true, allCorrect = true;
 
@@ -123,8 +125,9 @@ export function checkAnswers() {
       username = "anonymous";
     }
     //const username = gameState.username || "Anonymous";
-    saveToLeaderboard(username.trim(), time);
-
+    await saveToLeaderboard(username.trim(), time);
+    await loadLeaderboard();
+    document.getElementById('myForm').style.display = 'block';
     
     //alert(`🎉 Puzzle Solved in ${time}! Great job ${username}!`);
 
@@ -144,10 +147,12 @@ function resetPuzzle() {
     input.style.backgroundColor = '';
     input.style.color = 'black';
   });
+  stopTimer();
 }
 
 async function saveToLeaderboard(username, time) {
   try {
+    console.log("Saving", username, time)
     await addDoc(collection(db, "leaderboard"), {
       username,
       time,
@@ -157,6 +162,36 @@ async function saveToLeaderboard(username, time) {
   } catch (err) {
     console.error("Error saving score:", err);
   }
+}
+
+export async function loadLeaderboard() {
+  const tableBody = document.querySelector("#leaderboard-table tbody");
+  tableBody.innerHTML = "";
+
+  const now = Date.now();
+  const oneDayAgo = now - 24 * 60 * 60 * 1000;
+
+  const q = query(collection(db, "leaderboard"), orderBy("timestamp", "desc"), limit(50));
+  const snapshot = await getDocs(q);
+
+  snapshot.forEach(doc => {
+    const data = doc.data();
+    const savedTime = data.timestamp?.toMillis?.();
+
+    if (!savedTime || savedTime >= oneDayAgo) {
+      const row = document.createElement("tr");
+
+      const userCell = document.createElement("td");
+      userCell.textContent = data.username;
+
+      const timeCell = document.createElement("td");
+      timeCell.textContent = data.time;
+
+      row.appendChild(userCell);
+      row.appendChild(timeCell);
+      tableBody.appendChild(row);
+    }
+  });
 }
 
 //== ==//
@@ -193,8 +228,8 @@ document.getElementById('play-button').addEventListener('click', function() {
   const icon = document.getElementById('icon');
   if (isTimerRunning()) {
     stopTimer();
-    toggleClues(false); 
-    icon.innerHTML = '&#9658;';
+    //toggleClues(false); 
+    //icon.innerHTML = '&#9658;';
   } else {
     startTimer();
     //toggleClues(true);

@@ -70,6 +70,17 @@
           <span onclick="document.getElementById('myForm').style.display='none'" class="close" title="Close Modal">&times;</span>
           <form class="leaderboard-container">
             <h1>Leaderboard</h1>
+            <table id="leaderboard-table">
+              <thead>
+                <tr>
+                  <th> User </th>
+                  <th> Time </th>
+                </tr>
+              </thead>
+              <tbody>
+
+              </tbody>
+            </table>
           </form>
         </div>
         <div id="puzzle-toolbar">
@@ -100,7 +111,7 @@
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
   <script type="module" src="crossword.js"></script>
   <script type="module" src="puzzle.js"></script>
-  <script type="module" src="inputHandler.js"></script>
+  <script type="module" src="inputHandlers.js"></script>
   <script type="module" src="timer.js"></script>
   <script type="module" src="gameState.js"></script>
   <script type="module" src="init-firestore.js"></script>
