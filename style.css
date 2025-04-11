@@ -170,8 +170,10 @@ ul {
 }
 
 .left-side {
-    width: 60%;
+    height: 40vw;
+    aspect-ratio: 1/1;
     margin: 10px;
+
 }
 
 #puzzle-toolbar {
@@ -212,7 +214,7 @@ ul {
 .puzzle-area {
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
+    justify-content: center;
     width: 100%;
     margin: auto;
 }
@@ -223,12 +225,14 @@ ul {
     justify-content: center;
     align-items: center;
     width: 100%;
+    height: 100%;
     padding: 15px;
     background-color: #6ba68c;
     margin: 0px;
     grid-template-columns: repeat(var(--cols), 1fr);
     grid-template-rows: repeat(var(--rows), 1fr); 
     border-radius: 6px;
+    aspect-ratio: 1/1;
     }
 
 #clue-section {
@@ -291,13 +295,13 @@ ul {
 
 .navbar__container {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     height: 80px;
     z-index: 1;
     width: 100%;
     max-width: 1300px;
     margin: 0;
-    padding: 0 50px;
+
 }
 
 #navbar__logo {
@@ -321,11 +325,12 @@ ul {
 }*/
 
 .navbar__menu {
-    display: flex;
+    /*
     align-items: center;
     list-style: none;
-    text-align: center;
-    gap: 20px;
+    text-align: center;*/
+    display: flex;
+    justify-content: flex-end;
 }
 
 .navbar__item {
@@ -336,7 +341,6 @@ ul {
     color: #fff;
     display: flex;
     align-items: center;
-    justify-content: center;
     text-decoration: none;
     padding: 0 1rem;
     height: 100%;
@@ -346,19 +350,25 @@ ul {
 
 .navbar__home {
     color: #fff;
-    display: flex;
+    /*display: flex;
     align-items: center;
-    justify-content: left;
-    text-decoration: none;
+
     margin-left: 30px;
     height: 100%;
+*/
     font-family: "TreasureMapDeadhand";
     font-size: 40px;
+    float: none;
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    transform: translate(-50%, -50%);
+    text-decoration: none;
 }
 
 .navbar__bttn {
     display: flex;
-    justify-content: center;
+    justify-content: right;
     align-items: center;
     width: 100%;
 }
@@ -371,7 +381,7 @@ ul {
     font-family: "TreasureMapDeadhand";
     font-size: 30px;
     padding: 10px 15px;
-    height: 100%;
+    height: 90%;
     width: 150px;
     border: none;
     outline: none;
@@ -408,7 +418,7 @@ ul {
     width: 100%;
     height: 100%;
     border: none /*1px solid #beaeec*/;
-    font-size: 10vw;
+    font-size: 100%;
     text-align: center;
     box-sizing: border-box;
 }
@@ -434,6 +444,7 @@ ul {
     border: none;
     outline: none;
     background-color: #fff;
+    font-size: 100%;
   }
   
 .clue-number {
@@ -549,7 +560,7 @@ ul {
         display: flex;
         flex-direction: column;
         align-items: center;
-        width: 90vw;
+        height: 70vh;
         margin: auto;
         flex-grow: 1;
     }
@@ -566,8 +577,8 @@ ul {
     }
 
     #puzzle-container {
-        width: 90%;
-        padding: 10px;
+        height: fit-content;
+        width: fit-content;
         margin: 5px;
         }
 

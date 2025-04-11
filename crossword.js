@@ -7,7 +7,7 @@
 //  document.getElementById("side-section").style.width = "0";
 //}
 
-import { startTimer, stopTimer, updateTimer, isTimerRunning } from './timer.js';
+import { startTimer, stopTimer, updateTimer, isTimerRunning, getElapsedTime } from './timer.js';
 import { loadPuzzle, highlightWord, focusFirstEmptyCell, highlightClueForCell } from './puzzle.js'
 import { addAutoCheckListeners } from './inputHandlers.js';
 import { gameState } from './gameState.js'
@@ -98,7 +98,7 @@ submitButton.addEventListener('click', function(event) {
 });
 
 //==CHECK, RESET, and SAVE==//
-function checkAnswers() {
+export function checkAnswers() {
   const inputs = document.querySelectorAll('.cell:not(.black-cell)');
   let allFilled = true, allCorrect = true;
 
@@ -106,19 +106,29 @@ function checkAnswers() {
     const expected = input.dataset.correctLetter;
     const value = input.value.toUpperCase();
 
-    if (value === '') {allFilled = false} 
-    else if (value !== expected) {allCorrect = false}
+    if (value === '') {
+      allFilled = false
+    } else if (value !== expected) {
+      allCorrect = false
+    }
   });
 
   if (allFilled && allCorrect) {
-    const time = updateTimer();
     stopTimer();
+    const textTime = document.getElementById('timer').textContent;
+    const time = getElapsedTime();
 
-    const username = usernameInput.value.trim();
-    saveToLeaderboard(gameState.username, time);
-    alert(`🎉 Puzzle Solved in ${time}! Great job ${gameState.username}!`);
+    let username = prompt("Puzzle solved! my god!! Please enter ur usr ;)")
+    if (!username || username.trim() === "") {
+      username = "anonymous";
+    }
+    //const username = gameState.username || "Anonymous";
+    saveToLeaderboard(username.trim(), time);
 
-    document.getElementById('congrats-message').innerHTML = `Congratulations ${gameState.username}! You solved the puzzle in ${time}.`;
+    
+    //alert(`🎉 Puzzle Solved in ${time}! Great job ${username}!`);
+
+    document.getElementById('congrats-message').innerHTML = `Congratulations ${username}! You solved the puzzle in ${textTime}.`;
 
     inputs.forEach(i => i.style.color = '#3f7b62');
     confetti({ particleCount: 200, spread: 70, origin: { y: 0.6 } });
@@ -136,7 +146,7 @@ function resetPuzzle() {
   });
 }
 
-async function saveToLeaderboard(username, timeToComplete) {
+async function saveToLeaderboard(username, time) {
   try {
     await addDoc(collection(db, "leaderboard"), {
       username,
@@ -192,7 +202,7 @@ document.getElementById('play-button').addEventListener('click', function() {
   }
 });
 
-document.getElementById('check-answers').addEventListener('click', checkAnswers);
+//document.getElementById('check-answers').addEventListener('click', checkAnswers);
 document.getElementById('reset').addEventListener('click', resetPuzzle)
 
 

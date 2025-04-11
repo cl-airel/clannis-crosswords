@@ -30,3 +30,7 @@ export function updateTimer() {
 function padZero(num) {
   return num < 10 ? `0${num}` : num;
 }
+
+export function getElapsedTime() {
+  return timeElapsed;
+}
