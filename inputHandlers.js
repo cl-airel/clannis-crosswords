@@ -1,6 +1,7 @@
 import { highlightWord, focusFirstEmptyCell, highlightClueForCell, clearHighlights } from './puzzle.js';
 import { gameState } from './gameState.js'
 import { checkAnswers } from './crossword.js'
+import { startTimer, isTimerRunning } from './timer.js';
 //ayrg
 
 export function addAutoCheckListeners(puzzle) {
@@ -13,6 +14,10 @@ export function addAutoCheckListeners(puzzle) {
 }
 
 function handleInput(e) {
+  if (!isTimerRunning()) {
+    startTimer();
+  }
+
   e.preventDefault();
   const input = e.target;
   input.value = input.value.charAt(0); // force 1 char

@@ -175,7 +175,7 @@ function setCurrentClue(row, col, direction) {
   if (currentClueDown) currentClueDown.dataset.current = 'true';
 }
 
-function toggleClues(show) {
+export function toggleClues(show) {
   const acrossClues = document.querySelectorAll('#across-clues li');
   const downClues = document.querySelectorAll('#down-clues li');
 
@@ -197,8 +197,8 @@ document.getElementById('play-button').addEventListener('click', function() {
     icon.innerHTML = '&#9658;';
   } else {
     startTimer();
-    toggleClues(true);
-    icon.innerHTML = "&#10074;&#10074;";
+    //toggleClues(true);
+    //icon.innerHTML = "&#10074;&#10074;";
   }
 });
 
