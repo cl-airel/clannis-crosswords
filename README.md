@@ -17,6 +17,7 @@ If you want to, create your own branch for development. Otherwise make modificat
 - [x] Clues
 - [x] Clue numbers
 - [ ] archive with one puzzle
+    - [ ] leaderboard on archive puzzles
 - [ ] Quality of life updates
     - [x] auto move to next square after input
     - [ ] fix auto move to wrap around
