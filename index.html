@@ -42,7 +42,7 @@
                   <b>Username</b>
                 </label>
                 <input type="text" id="username" placeholder="Enter username" name="uname" required>
-                <button type="submit">Login</button>
+                <button type="submit" id="submit-username">Login</button>
                 <label>
                   <input type="checkbox" checked="checked">Remember me
                 </label>
@@ -56,6 +56,19 @@
   </nav>
 
   <!-- Main Content -->
+  <div id="congrats-message"></div>
+  <div id="leaderboard">
+    <h2>Leaderboard</h2>
+    <ol id="leaderboard-list"></ol>
+    <div id="username-display" style="margin-top: 0.5rem;"></div>
+  </div>
+
+  <div id="success-modal">
+    <p>You solved the puzzle! 🎉</p>
+    <input type="text" id="username-input" placeholder="Enter your name" />
+    <button id="submit-score">Submit Score</button>
+  </div>
+
   <div id="main-section">
     <div class="puzzle-area">
         <div class="left-side">
@@ -63,6 +76,13 @@
         </div>
       <div id="clue-section">
         <h1 class="titlepage">Today's Puzzle</h1>
+        <button class="ldr-bttn">Click to View Leaderboard</button>
+        <div class="form-popup" id="myForm">
+          <span onclick="document.getElementById('myForm').style.display='none'" class="close" title="Close Modal">&times;</span>
+          <form class="leaderboard-container">
+            <h1>Leaderboard</h1>
+          </form>
+        </div>
         <div id="puzzle-toolbar">
           <button id="play-button">
             <span id="icon">&#9658;</span> 
@@ -81,67 +101,18 @@
           <h3 class="header-background">Down</h3>
           <ul id="down-clues"></ul>
         </div>
+        <h2>Leaderboard</h2>
+        <ul id="leaderboard-list"></ul>
       </div>
     </div>
     <img src="/imgs/Pirate_ad.jpg" alt="This is an ad" style="width:90vw;margin:10px">
   </div>
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-  <script src="crossword.js"></script>
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
-    import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-analytics.js";
-    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
-    
-    // Your Firebase config
-    const firebaseConfig = {
-      apiKey: "AIzaSyCHJhzn_9WUpT9O2up9ZrGC5s6qnHmc5qc",
-      authDomain: "clannis-crosswords.firebaseapp.com",
-      projectId: "clannis-crosswords",
-      storageBucket: "clannis-crosswords.firebasestorage.app",
-      messagingSenderId: "364161917758",
-      appId: "1:364161917758:web:fddc4972bc9e0497afc26f",
-      measurementId: "G-BLNYZEGM8B"
-    };
-    
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-    const analytics = getAnalytics(app);
-    
-    // Initialize Firestore
-    const db = getFirestore(app);
-    
-    // Get the form and username input
-    const form = document.querySelector('form');
-    const usernameInput = document.getElementById('username');
-    
-    // Add event listener to form submission
-    form.addEventListener('submit', async function (event) {
-      event.preventDefault(); // Prevent form from submitting and reloading the page
-    
-      const username = usernameInput.value.trim(); // Get username and trim whitespace
-    
-      if (username) { // Check if the username is not empty
-        try {
-          // Save the username to Firestore in a "users" collection
-          const docRef = await addDoc(collection(db, "users"), {
-            username: username,
-            timestamp: new Date() // Optional: Add a timestamp
-          });
-    
-          console.log("Username saved with ID: ", docRef.id);
-    
-          // Optionally, close the modal after saving
-          document.getElementById('id01').style.display = 'none';
-    
-          // Clear the input field
-          usernameInput.value = '';
-        } catch (e) {
-          console.error("Error saving username: ", e);
-        }
-      } else {
-        alert("Please enter a valid username.");
-      }
-    });
-  </script>
+  <script type="module" src="crossword.js"></script>
+  <script type="module" src="puzzle.js"></script>
+  <script type="module" src="inputHandler.js"></script>
+  <script type="module" src="timer.js"></script>
+  <script type="module" src="gameState.js"></script>
+  <script type="module" src="init-firestore.js"></script>
 </body>
 </html>
