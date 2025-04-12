@@ -4,19 +4,21 @@ If you want to, create your own branch for development. Otherwise make modificat
 ## Goals to hit before beta release:
 - [ ] archive with one puzzle
 - [ ] welcome message
-- [ ] display username on page
-- [ ] record time of completion with username
-- [ ] daily leaderboard
+- [x] display username on page
+- [x] record time of completion with username
+- [x] daily leaderboard
 - [ ] fix cell movement
 - [ ] rotating ads
-- [ ] top banner
+- [x] top banner
 - [ ] about me page
+- [ ] event listener for opening leaderboard button
 
 ## Welcome to our crossword collection! Here's our to-do list for us to reference:
 
 - [x] Clues
 - [x] Clue numbers
 - [ ] archive with one puzzle
+    - [ ] leaderboard on archive puzzles
 - [ ] Quality of life updates
     - [x] auto move to next square after input
     - [ ] fix auto move to wrap around
