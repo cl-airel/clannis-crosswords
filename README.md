@@ -11,6 +11,7 @@ If you want to, create your own branch for development. Otherwise make modificat
 - [ ] rotating ads
 - [x] top banner
 - [ ] about me page
+- [ ] event listener for opening leaderboard button
 
 ## Welcome to our crossword collection! Here's our to-do list for us to reference:
 
