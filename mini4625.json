@@ -2,30 +2,34 @@
   "title": "My First Puzzle",
   "size": { "rows": 5, "cols": 5 },
   "grid": [
+    ["", "", "", "", "#"],
+    ["", "", "", "", "#"],
     ["", "", "", "", ""],
-    ["", "#", "", "#", ""],
-    ["", "", "", "", ""],
-    ["", "#", "", "#", ""],
-    ["", "", "", "", ""]
+    ["#", "", "", "", ""],
+    ["#", "", "", "", ""]
   ],
   "clues": {
     "across": [
-      {"number": 1, "row": 0, "col": 0, "clue": "First five letters of the alphabet"},
-      {"number": 4, "row":2, "col":0, "clue": "more letters"},
-      {"number": 5, "row":4, "col":0, "clue": "even more letters"}
+      {"number": 1, "row": 0, "col": 0, "clue": "Stumble into a vacation"},
+      {"number": 5, "row":1, "col":0, "clue": "Not even one"},
+      {"number": 6, "row":2, "col":0, "clue": "Where Claire is attending grad school 0_0"},
+      {"number": 8, "row":3, "col":1, "clue": "Religious devision"},
+      {"number": 9, "row":4, "col":1, "clue": "Origin city of famous horse"}
     ],
     "down": [
-      {"number": 1, "row":0, "col":0, "clue": "jargon"},
-      {"number": 2, "row":0, "col":2, "clue": "more jargon"},
-      {"number": 3, "row":0, "col":4, "clue": "even more jargon"}
+      {"number": 1, "row":0, "col":0, "clue": "Explosive material"},
+      {"number": 2, "row":0, "col":1, "clue": "To rudely awake someone"},
+      {"number": 3, "row":0, "col":2, "clue": "Predict with context"},
+      {"number": 4, "row":0, "col":3, "clue": "Where you might go to buy fish"},
+      {"number": 7, "row":0, "col":4, "clue": "Pig's home"}
     ]
   },
 
   "solution": [
-    ["A", "B", "C", "D", "E"],
-    ["F", "", "G", "", "H"],
-    ["I", "J", "K", "L", "M"],
-    ["N", "", "O", "", "P"],
-    ["Q", "R", "S", "T", "U"]
+    ["T", "R", "I", "P", ""],
+    ["N", "O", "N", "E", ""],
+    ["T", "U", "F", "T", "S"],
+    ["", "S", "E", "C", "T"],
+    ["", "T", "R", "O", "Y"]
   ]
 }
