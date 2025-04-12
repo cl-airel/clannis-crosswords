@@ -128,8 +128,8 @@ export async function checkAnswers() {
       username = "anonymous";
     }
     //const username = gameState.username || "Anonymous";
-    await saveToLeaderboard(username.trim(), time, gameState.currentPuzzleID);
-    await loadLeaderboard(gameState.currentPuzzleID);
+    await saveToLeaderboard(username.trim(), time, gameState.puzzleId);
+    await loadLeaderboard(gameState.puzzleId);
     document.getElementById('myForm').style.display = 'block';
     
     //alert(`🎉 Puzzle Solved in ${time}! Great job ${username}!`);
@@ -174,7 +174,7 @@ export async function loadLeaderboard(puzzleID) {
 
   const q = query(
     collection(db, "leaderboard"),
-    where("puzzleID", "==", puzzleID),
+    where("puzzleID", "==", gameState.puzzleId),
     orderBy("time"),
     limit(50)); //change this to show N entries
   const snapshot = await getDocs(q);
@@ -189,6 +189,7 @@ export async function loadLeaderboard(puzzleID) {
     userCell.textContent = data.username;
 
     const timeCell = document.createElement("td");
+    console.log("Fetched entry for puzzle", data.puzzleID)
     timeCell.textContent = data.time;
 
     row.appendChild(userCell);

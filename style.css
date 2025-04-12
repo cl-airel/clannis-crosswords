@@ -22,7 +22,7 @@ grey #454851
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Roboto' !important;
+    font-family: 'Roboto';
 }
 
 
@@ -37,10 +37,10 @@ input[type=text]{
   }
 
   button {
-    background-color: blue;
-    color: white;
+    background-color: transparent;
+    color: #fff;
     padding: 14px 20px;
-    margin: 8px 0;
+    margin: 0;
     border: none;
     cursor: pointer;
     width: 100%;
@@ -83,7 +83,6 @@ input[type=text]{
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    border: 3px solid #f1f1f1;
     z-index: 999;
 }
 
@@ -93,12 +92,18 @@ input[type=text]{
     width: 50vw;
     height: 60vw;
     padding: 10px;
-    background-color: #c0c3cb;
-
+    background-color: #c8bfe6;
+    border-radius: 6px;
+    border: 5px solid #887fa6;
   }
 
+.leaderboard-container h1{
+    margin: 10px;
+}
+
 table, td, th {
-    border: 1px solid;
+    border: 2px solid #887fa6;
+    border-radius: 1px;
 }
 
 table {
@@ -260,6 +265,7 @@ ul {
     flex-direction: row;
     justify-content: center;
     margin: 5px;
+    height: 40vh;
 }
 
 .left-side {
@@ -270,6 +276,7 @@ ul {
     aspect-ratio: 1/1;
     margin: 10px;
     box-sizing: border-box;
+    text-align: left;
 }
 
 #puzzle-container {
@@ -280,11 +287,11 @@ ul {
     width: 100%;
     padding: 10px;
     background-color: #454851;
-    margin: 5px;
     grid-template-columns: repeat(var(--cols), 1fr);
     grid-template-rows: repeat(var(--rows), 1fr); 
     border-radius: 6px;
     box-sizing: border-box;
+    margin-bottom: 5px;
     }
 
 #clue-section {
@@ -294,7 +301,7 @@ ul {
     margin: auto 10px auto 5px;
     border-radius: 6px;
     padding: 10px;
-}
+ }
 
 #down-clues, #across-clues {
     overflow-y: auto;
@@ -316,6 +323,28 @@ ul {
     padding: 5px 10px;
 }
 
+.down-clues, .across-clues {
+    max-height: 300px; /* Adjust as needed */
+    overflow-y: auto;
+    background-color: #c0c3cb;
+    margin-bottom: 5px;
+    border-radius: 0px 0px 6px 6px;
+    padding: 0;
+    width: 100%;  
+}
+
+.across-clues h3, .down-clues h3 {
+    position: sticky;
+    top: 0;
+    background: #454851;
+    color: #fff;
+    margin: 0;
+    padding: 5px;
+    z-index: 1;
+    border-radius: 6px 6px 0px 0px;
+    /*font-size: 25px;*/
+  }
+  
 /*#down-clues li.visible, #across-clues li.visible {
     opacity: 1;
 }*/
@@ -376,10 +405,6 @@ ul {
 
 }
 
-/*.fa-gem {
-    margin-right: 0.5rem;
-}*/
-
 .navbar__menu {
     display: flex;
     flex: 2;
@@ -389,7 +414,6 @@ ul {
     text-align: center;
     height: 100%;
     gap: 10px;
-    
 }
 
 .navbar__item {
@@ -454,18 +478,39 @@ ul {
 .navbar__home:hover {
     color: #A3E7FC;
 }
+  
+  /* The container <div> - needed to position the dropdown content */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* Dropdown Content (Hidden by Default) */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #c0c3cb;
+    min-width: 100%;
+    /*box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);*/
+    z-index: 1;
+    margin-top: 1px;
+  }
+  
+  /* Links inside the dropdown */
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  /* Change color of dropdown links on hover */
+  .dropdown-content a:hover {background-color: #ddd;}
+  
+  /* Show the dropdown menu on hover */
+  .dropdown:hover .dropdown-content {display: block;}
+
 /* ----- ----- */
-
-.header-background{
-    background-color: #454851;
-    color: #fff;
-    margin-top: 0;
-    font-family: "Roboto";
-    font-size: 25px;
-    padding: 10px;
-    border-radius: 6px 6px 0px 0px;
-}
-
 
 /* CELLS */
 .row {
@@ -511,7 +556,7 @@ ul {
     position: absolute;
     top: 4px;
     left: 4px;
-    font-size: calc(1.5vw);
+    font-size: 10%;
     color: black;
     z-index: 10;
   }
@@ -522,6 +567,7 @@ ul {
     height: 100%;
     aspect-ratio: 1 / 1;
 }
+/* ----- ----- */
 
 /* ADS */
 .ads {
@@ -534,6 +580,83 @@ ul {
 .ads img {
     width: 70vw;
 }
+
+/* ----- ABOUT US ----- */
+.aboutus-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 5px 10px;
+    margin-bottom: 20px;
+    padding: 10px;
+    text-align: left;
+}
+
+.aboutus-sub {
+    color: #454851;
+    margin: 5px 0;
+    background-color: #C6ECFF;
+    padding: 5px 10px;
+    border-radius: 16px;
+    border-style: solid;
+    border-width: 10px;
+    border-color: #A3E7fc;
+    width: 60vw;
+}
+
+.aboutus-sub h1 {
+    margin: 0;
+    text-align: center;
+}
+
+.aboutus-sub p{
+    margin: 10px 0;
+    font-family: Helvetica;
+}
+
+.aboutus-sub dl{
+    text-align: center;
+    margin: 10px 0;
+}
+
+.aboutus-subrow {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+}
+
+.aboutus-subsub {
+    flex: 1;
+    margin: 5px 10px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+
+.aboutus-subsub dt{
+    text-align: center;
+    margin: 10px 0;
+}
+
+.aboutus-subsub img {
+    width: 100%;
+    border-radius: 6px;
+}
+
+.img-container {
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.img-container img {
+    width: 100%;
+}
+/* ----- ----- */
 
 @media screen and (max-width: 800px) {
     /* ----- NAV BAR ----- */
@@ -675,5 +798,11 @@ ul {
     .clue-number {
         font-size: 17px;
       }
+    /* ----- ----- */
+
+    /* ----- ABOUT US ----- */
+    .aboutus-sub {
+        width: 85vw;
+    }
     /* ----- ----- */
 }

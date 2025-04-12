@@ -7,5 +7,5 @@ export const gameState = {
     currentClueDirection: 'across',
     puzzle: null,
     username: null,
-    currentPuzzleID: null
+    puzzleId: null
   };
