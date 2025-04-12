@@ -1,22 +1,36 @@
 let lastClickedCell = null, lastDirection = "across";
 
 import { addAutoCheckListeners, isValidCell } from './inputHandlers.js'
-import { setupChecker, getRandomImage } from './crossword.js';
+import { setupChecker, getRandomImage, loadLeaderboard } from './crossword.js';
 import { gameState } from './gameState.js'
-
+//everything worked here
 export async function loadPuzzle() {
-  const response = await fetch('puzzle-archive/test_puzzle.json');
+  console.log("Puzzle ID:", document.body.dataset.puzzleId)
+  gameState.puzzleId = document.body.dataset.puzzleId;
+  const filePath = `puzzle-archive/${gameState.puzzleId}.json`;
+
+  try {
+    const response = await fetch(filePath);
+    if (!response.ok) {
+      throw new Error(`Puzzle ${filePath} not found :(`)
+    }
+
+  //const response = await fetch('puzzle-archive/test_puzzle.json');
   const puzzle = await response.json();
 
   gameState.currentPuzzle = puzzle;
-  gameState.currentPuzzleID = puzzle.id;
 
   renderPuzzle(puzzle);
   displayClues(puzzle);
   setupChecker(puzzle);
   addAutoCheckListeners(puzzle);
   getRandomImage();
+  loadLeaderboard(gameState.puzzleId);
+
   return puzzle;
+  } catch (error) {
+    console.error("failed to load puzzle", error)
+  }
 }
 
 export function renderPuzzle(puzzle) {
