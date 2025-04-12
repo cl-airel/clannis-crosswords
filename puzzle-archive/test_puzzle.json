@@ -1,4 +1,5 @@
 {
+  "id": "test_puzzle",
   "title": "My First Puzzle",
   "size": { "rows": 5, "cols": 5 },
   "grid": [

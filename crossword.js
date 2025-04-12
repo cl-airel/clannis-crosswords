@@ -1,17 +1,9 @@
 // Main file that loads all of the puzzles n whatnot
-//function openNav() {
-//  document.getElementById("side-section").style.width = "250px";
-//}
-
-//function closeNav() {
-//  document.getElementById("side-section").style.width = "0";
-//}
-
 import { startTimer, stopTimer, updateTimer, isTimerRunning, getElapsedTime } from './timer.js';
 import { loadPuzzle, highlightWord, focusFirstEmptyCell, highlightClueForCell } from './puzzle.js'
 import { addAutoCheckListeners } from './inputHandlers.js';
 import { gameState } from './gameState.js'
-import { collection, addDoc, getDocs, query, orderBy, limit, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
+import { collection, addDoc, getDocs, query, orderBy, limit, serverTimestamp, where } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
 import { db } from "./init-firestore.js"
 
 export function setupChecker() {
@@ -57,7 +49,7 @@ loadPuzzle().then((loadedPuzzle) => {
   highlightClueForCell(firstClue.row, firstClue.col)
 });
 
-//==MENU TOGGLES==//
+//== MENU TOGGLES and ADS==//
 document.querySelector('.ldr-bttn').addEventListener('click', openForm);
 function openForm() {
   document.getElementById("myForm").style.display = "block";
@@ -80,24 +72,35 @@ window.onclick = function(event) {
     }
 }
 
+let ImageArray = [];
+ImageArray[0] = 'Bread_ad.jpg';
+ImageArray[1] = 'Pirate_ad.jpg';
+ImageArray[2] = 'Manatee_ad.jpg';
+
+export function getRandomImage() {
+  var num = Math.floor( Math.random() * 3);
+  var img = ImageArray[num];
+  document.getElementById("randImage").innerHTML = ('<img src="' + 'imgs/ads/' + img + '" width="100%">')
+}
+
 //==USERNAME SUBMISSION==//
 const usernameInput = document.getElementById('username');
-const submitButton = document.getElementById('submit-username');
+//const submitButton = document.getElementById('submit-username');
 const usernameDisplay = document.getElementById('username-display');
 
 // Add event listener to button
-submitButton.addEventListener('click', function(event) {
-    event.preventDefault(); // Prevent form submission (if it's within a form)
-    const username = usernameInput.value.trim(); // Get the username and trim whitespace
+//submitButton.addEventListener('click', function(event) {
+//    event.preventDefault(); // Prevent form submission (if it's within a form)
+//    const username = usernameInput.value.trim(); // Get the username and trim whitespace
 
-    if (username) {
-      gameState.username = username;
-      usernameDisplay.textContent = `Welcome, ${username}!`;
-      usernameInput.value = '';
-    } else {
-        alert("Please enter a valid username.");
-    }
-});
+//    if (username) {
+//      gameState.username = username;
+//      usernameDisplay.textContent = `Welcome, ${username}!`;
+//      usernameInput.value = '';
+//    } else {
+//        alert("Please enter a valid username.");
+//    }
+//});
 
 //==CHECK, RESET, and SAVE==//
 export async function checkAnswers() {
@@ -125,13 +128,13 @@ export async function checkAnswers() {
       username = "anonymous";
     }
     //const username = gameState.username || "Anonymous";
-    await saveToLeaderboard(username.trim(), time);
-    await loadLeaderboard();
+    await saveToLeaderboard(username.trim(), time, gameState.currentPuzzleID);
+    await loadLeaderboard(gameState.currentPuzzleID);
     document.getElementById('myForm').style.display = 'block';
     
     //alert(`🎉 Puzzle Solved in ${time}! Great job ${username}!`);
 
-    document.getElementById('congrats-message').innerHTML = `Congratulations ${username}! You solved the puzzle in ${textTime}.`;
+    document.getElementById('congrats-message').innerHTML = ` ⊹ ₊  ⁺‧₊˚ ♡ ପ(๑•ᴗ•๑)ଓ ♡˚₊‧⁺ ₊ ⊹ Congratulations ${username}! You solved the puzzle in ${textTime} ٩(ˊᗜˋ )و`;
 
     inputs.forEach(i => i.style.color = '#3f7b62');
     confetti({ particleCount: 200, spread: 70, origin: { y: 0.6 } });
@@ -150,12 +153,13 @@ function resetPuzzle() {
   stopTimer();
 }
 
-async function saveToLeaderboard(username, time) {
+async function saveToLeaderboard(username, time, puzzleID) {
   try {
     console.log("Saving", username, time)
     await addDoc(collection(db, "leaderboard"), {
       username,
       time,
+      puzzleID,
       timestamp: serverTimestamp()
    });
     console.log("Score saved to leaderboard!");
@@ -164,33 +168,33 @@ async function saveToLeaderboard(username, time) {
   }
 }
 
-export async function loadLeaderboard() {
+export async function loadLeaderboard(puzzleID) {
   const tableBody = document.querySelector("#leaderboard-table tbody");
   tableBody.innerHTML = "";
 
-  const now = Date.now();
-  const oneDayAgo = now - 24 * 60 * 60 * 1000;
-
-  const q = query(collection(db, "leaderboard"), orderBy("timestamp", "desc"), limit(50));
+  const q = query(
+    collection(db, "leaderboard"),
+    where("puzzleID", "==", puzzleID),
+    orderBy("time"),
+    limit(50)); //change this to show N entries
   const snapshot = await getDocs(q);
 
   snapshot.forEach(doc => {
     const data = doc.data();
     const savedTime = data.timestamp?.toMillis?.();
 
-    if (!savedTime || savedTime >= oneDayAgo) {
-      const row = document.createElement("tr");
+    const row = document.createElement("tr");
 
-      const userCell = document.createElement("td");
-      userCell.textContent = data.username;
+    const userCell = document.createElement("td");
+    userCell.textContent = data.username;
 
-      const timeCell = document.createElement("td");
-      timeCell.textContent = data.time;
+    const timeCell = document.createElement("td");
+    timeCell.textContent = data.time;
 
-      row.appendChild(userCell);
-      row.appendChild(timeCell);
-      tableBody.appendChild(row);
-    }
+    row.appendChild(userCell);
+    row.appendChild(timeCell);
+    tableBody.appendChild(row);
+
   });
 }
 
