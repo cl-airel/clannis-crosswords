@@ -1,0 +1,36 @@
+{
+  "id": "last_weeks_puzzle",
+  "title": "Last Weeks Puzzle",
+  "size": { "rows": 5, "cols": 5 },
+  "grid": [
+    ["#", "#", "", "", ""],
+    ["#", "", "", "", ""],
+    ["", "", "", "", ""],
+    ["", "", "", "", "#"],
+    ["", "", "", "#", "#"]
+  ],
+  "clues": {
+    "across": [
+      {"number": 1, "row":0, "col":2, "clue": "Subculture orginating from punk"},
+      {"number": 4, "row":1, "col":1, "clue": "Carolina ____ (small brown bird)"},
+      {"number": 5, "row":2, "col":0, "clue": "See 3 down"},
+      {"number": 6, "row":3, "col":0, "clue": "St. Louis shape"},
+      {"number": 7, "row":4, "col":0, "clue": "Not gross"}
+    ],
+    "down": [
+      {"number": 1, "row":0, "col":2, "clue": "Upright"},
+      {"number": 2, "row":0, "col":3, "clue": "Where one might go to fix their car (informal)"},
+      {"number": 3, "row":0, "col":4, "clue": "GOAT show (with 5 across)"},
+      {"number": 4, "row":1, "col":1, "clue": "Down to the ____"},
+      {"number": 5, "row":2, "col":0, "clue": "Rapunzel's weapon in Tangled"}
+    ]
+  },
+
+  "solution": [
+    ["", "", "E", "M", "O"],
+    ["", "W", "R", "E", "N"],
+    ["P", "I", "E", "C", "E"],
+    ["A", "R", "C", "H", ""],
+    ["N", "E", "T", "", ""]
+  ]
+}
