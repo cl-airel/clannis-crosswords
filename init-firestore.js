@@ -18,7 +18,7 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 
 // Initialize Firestore
-const db = getFirestore(app);
+export const db = getFirestore(app);
 
 // Get the form and username input
 const form = document.querySelector('form');

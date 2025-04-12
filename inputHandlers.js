@@ -1,5 +1,7 @@
 import { highlightWord, focusFirstEmptyCell, highlightClueForCell, clearHighlights } from './puzzle.js';
 import { gameState } from './gameState.js'
+import { checkAnswers } from './crossword.js'
+import { startTimer, isTimerRunning } from './timer.js';
 //ayrg
 
 export function addAutoCheckListeners(puzzle) {
@@ -12,26 +14,37 @@ export function addAutoCheckListeners(puzzle) {
 }
 
 function handleInput(e) {
-    e.preventDefault();
-    const input = e.target;
-    input.value = input.value.charAt(0); // force 1 char
-    const value = input.value;
+  if (!isTimerRunning()) {
+    startTimer();
+  }
 
-    const row = parseInt(input.dataset.row);
-    const col = parseInt(input.dataset.col);  
+  e.preventDefault();
+  const input = e.target;
+  input.value = input.value.charAt(0); // force 1 char
+  const value = input.value;
 
-    if (value) {
-        if (isCurrentWordComplete(row, col, gameState.currentDirection)) {
-            console.log("complete");
-            moveToNextWord(puzzle);
-        } else {
-            moveToNextCell(row, col, gameState.currentDirection);
-        }
-    }
+  const row = parseInt(input.dataset.row);
+  const col = parseInt(input.dataset.col);  
 
-    if (row !== null && col !== null) {
-        highlightWord(row, col, gameState.currentDirection, gameState.currentPuzzle);
-    }
+  if (value) {
+      if (isCurrentWordComplete(row, col, gameState.currentDirection)) {
+          console.log("complete");
+          //moveToNextWord(gameState.currentPuzzle);
+      } else {
+          moveToNextCell(row, col, gameState.currentDirection);
+      }
+  }
+
+  if (row !== null && col !== null) {
+      highlightWord(row, col, gameState.currentDirection, gameState.currentPuzzle);
+  }
+  const inputs = document.querySelectorAll('.cell:not(.black-cell)');
+  const allFilled = Array.from(inputs).every(cell => cell.value.trim() !== '');
+
+  if (allFilled) {
+    console.log("all filled")
+    checkAnswers();
+  }
 }
 
 function handleKeyDown(e) {
@@ -88,13 +101,6 @@ function handleFocus(e) {
     const right = document.querySelector(`input[data-row="${gameState.currentRow}"][data-col="${gameState.currentCol + 1}"]`);
     const down = document.querySelector(`input[data-row="${gameState.currentRow + 1}"][data-col="${gameState.currentCol}"]`);
     gameState.currentDirection = right && !right.classList.contains("black-cell") ? "across" : "down";
-
-    const clue = findCurrentClue(gameState.currentRow, gameState.currentCol, gameState.currentDirection);
-    if (clue) {
-      gameState.currentClueStartRow = clue.row;
-      gameState.currentClueStartCol = clue.col;
-      gameState.currentClueDirection = gameState.currentDirection;
-    }
 
     highlightWord(gameState.currentRow, gameState.currentCol, gameState.currentDirection, gameState.currentPuzzle);
 }

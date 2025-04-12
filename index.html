@@ -6,22 +6,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Custom Crossword</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 
 <body>
 <!-- This is where the body of our webpage exists -->
-  <img class="banner" src="/imgs/banner-example.png" alt="really cool banner">
+  <img class="banner" src="/imgs/banner.jpg" alt="bt x-words">
 
   <!-- Navigation Bar -->
   <nav class="navbar">
     <div class="navbar__container">
+
       <a href="/" class="navbar__home">Home</a>
 
       <div class="navbar__toggle" id="mobile-menu">
         <span class="bar"></span> <span class="bar"></span> <span class="bar"></span>
       </div>
+
       <ul class="navbar__menu">
-        <li class="navbar__item">
+       <li class="navbar__item">
           <a href="/archive.html" class="navbar__links">Archive</a>
         </li>
         <li class="navbar__item">
@@ -30,7 +35,7 @@
         <li class="navbar__item">
           <a href="/aboutus.html" class="navbar__links">About Us</a>
         </li>
-        <li class="navbar__bttn">
+        <!-- <li class="navbar__bttn">
           <button onclick="document.getElementById('id01').style.display='block'" class="nav__button">Sign In</button>
           <div id="id01" class="modal">
             <form class="modal-content animate">
@@ -50,37 +55,38 @@
 
             </form>
           </div>
-        </li>
+        </li> -->
       </ul>
     </div>
   </nav>
 
   <!-- Main Content -->
-  <div id="congrats-message"></div>
-  <div id="leaderboard">
-    <h2>Leaderboard</h2>
-    <ol id="leaderboard-list"></ol>
-    <div id="username-display" style="margin-top: 0.5rem;"></div>
-  </div>
-
-  <div id="success-modal">
-    <p>You solved the puzzle! 🎉</p>
-    <input type="text" id="username-input" placeholder="Enter your name" />
-    <button id="submit-score">Submit Score</button>
-  </div>
+  <div id="congrats-message" class="pinyon-script-regular"></div>
 
   <div id="main-section">
     <div class="puzzle-area">
-        <div class="left-side">
-          <div id="puzzle-container"></div>
-        </div>
-      <div id="clue-section">
+      <div class="left-side">
         <h1 class="titlepage">Today's Puzzle</h1>
+        <div id="puzzle-container"></div>
+      </div>
+      <div id="clue-section">
+ 
         <button class="ldr-bttn">Click to View Leaderboard</button>
         <div class="form-popup" id="myForm">
           <span onclick="document.getElementById('myForm').style.display='none'" class="close" title="Close Modal">&times;</span>
           <form class="leaderboard-container">
             <h1>Leaderboard</h1>
+            <table id="leaderboard-table">
+              <thead>
+                <tr>
+                  <th> User </th>
+                  <th> Time </th>
+                </tr>
+              </thead>
+              <tbody>
+
+              </tbody>
+            </table>
           </form>
         </div>
         <div id="puzzle-toolbar">
@@ -101,16 +107,19 @@
           <h3 class="header-background">Down</h3>
           <ul id="down-clues"></ul>
         </div>
-        <h2>Leaderboard</h2>
         <ul id="leaderboard-list"></ul>
       </div>
     </div>
-    <img src="/imgs/Pirate_ad.jpg" alt="This is an ad" style="width:90vw;margin:10px">
+    <div class="ads" id="randImage">
+      <!-- <img src="/imgs/ads/Pirate_ad.jpg" alt="This is an ad" >
+      <img src="/imgs/ads/Manatee_ad.jpg" alt="This is an ad">
+      <img src="/imgs/ads/Bread_ad.jpg" alt="This is an ad"> -->
+    </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
   <script type="module" src="crossword.js"></script>
   <script type="module" src="puzzle.js"></script>
-  <script type="module" src="inputHandler.js"></script>
+  <script type="module" src="inputHandlers.js"></script>
   <script type="module" src="timer.js"></script>
   <script type="module" src="gameState.js"></script>
   <script type="module" src="init-firestore.js"></script>

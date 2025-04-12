@@ -3,10 +3,26 @@
     src: url('treasure-map-deadhand-font/TreasureMapDeadhand-yLA3.ttf') format('truetype');
 }
 
+.pinyon-script-regular {
+    font-family: "Pinyon Script", cursive;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+/* 
+beige #fff6d6
+blue #c6ecff
+yellow #fdcb0b
+purple #c8bfe6
+grey #454851
+
+*/
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: 'Roboto' !important;
 }
 
 
@@ -17,6 +33,7 @@ input[type=text]{
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
+    font-family: 'Roboto';
   }
 
   button {
@@ -42,17 +59,18 @@ input[type=text]{
     padding-top: 16px;
   }
 
+/* ----- LEADERBOARD ----- */
 .ldr-bttn {
-    background-color: #555;
+    background-color: #9488bb;
     color: white;
-    padding: 16px 20px;
+    padding: 16px 5px;
     border: none;
     cursor: pointer;
-    opacity: 0.8;
+    opacity: 0.6;
     position: fixed;
     bottom: 23px;
     right: 28px;
-    width: 280px;
+    width: 200px;
 }
 
 .ldr_bttn:hover {
@@ -75,10 +93,29 @@ input[type=text]{
     width: 50vw;
     height: 60vw;
     padding: 10px;
-    background-color: white;
+    background-color: #c0c3cb;
+
   }
 
+table, td, th {
+    border: 1px solid;
+}
 
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+leaderboard-table {
+    margin-top: 50px;
+}
+/* ----- -----*/
 
   .modal {
     display: none; /* Hidden by default */
@@ -145,10 +182,11 @@ input[type=text]{
     }
   }
 
+  /* ----- MAIN CONTENT ----- */
 body {
     text-align: center;
-    background-color: #f5f5f5;
-    font-family: sans-serif;
+    background-color: #fffdfd;
+    font-family: 'Roboto';
 }
 
 ul { 
@@ -163,22 +201,19 @@ ul {
 }
 
 .titlepage {
-    font-family: TreasureMapDeadhand;
+    font-family:'Roboto';
     text-align: center;
     font-size: 5vw;
     margin-bottom: 5px;
+    flex: 1;
 }
 
-.left-side {
-    width: 60%;
-    margin: 10px;
-}
-
+/* ----- PUZZLE TOOLBAR ----- */
 #puzzle-toolbar {
     display: flex;
     justify-content: center;
     margin-bottom: 5px;
-    background: #6ba68c;
+    background: #454851;
     border-radius: 6px;
     width: 100%;
   }
@@ -191,30 +226,50 @@ ul {
     cursor: pointer;
     border: none;
     border-radius: 6px;
-    background-color: #0d794a;
-    color: white;
+    background-color: #c8bfe6;
+    color: #000;
     transition: background-color 0.2s;
     margin: 7px;
+    font-family: "Roboto";
   }
   
   #puzzle-toolbar button:hover {
-    background-color: #073622;
+    background-color: #9185bc;
   }
+/* ----- ----- */
+
+
+#congrats-message {
+    margin-top: 10px;
+    font-family: 'Pinyon Script';
+}
 
 #main-section{
-    display: flex-inline;
+    display: flex;
+    flex-direction: column;
     align-items: flex-start;
     justify-content: center;
     margin: 0px;
     width: 100%;
+    padding: 10px;
 }
 
 .puzzle-area {
     display: flex;
+    flex: 1;
     flex-direction: row;
-    align-items: flex-start;
-    width: 100%;
-    margin: auto;
+    justify-content: center;
+    margin: 5px;
+}
+
+.left-side {
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1/1;
+    margin: 10px;
+    box-sizing: border-box;
 }
 
 #puzzle-container {
@@ -223,31 +278,30 @@ ul {
     justify-content: center;
     align-items: center;
     width: 100%;
-    padding: 15px;
-    background-color: #6ba68c;
-    margin: 0px;
+    padding: 10px;
+    background-color: #454851;
+    margin: 5px;
     grid-template-columns: repeat(var(--cols), 1fr);
     grid-template-rows: repeat(var(--rows), 1fr); 
     border-radius: 6px;
+    box-sizing: border-box;
     }
 
 #clue-section {
-    display: flex;
+    flex:1;
     flex-direction: column;
     justify-content: flex-start;
     margin: auto 10px auto 5px;
     border-radius: 6px;
-    width: 35%;
     padding: 10px;
 }
 
 #down-clues, #across-clues {
-    flex-grow: 1;
     overflow-y: auto;
-    background-color: #dfe4df;
+    background-color: #c0c3cb;
     margin-bottom: 5px;
     border-radius: 0px 0px 6px 6px;
-    padding: 10px;
+    padding: 5px 0;
 }
 
 #down-clues li, #across-clues li {
@@ -256,8 +310,10 @@ ul {
     font-size: 20px;
     cursor: pointer;
     transition: background-color 0.2s ease;
+    width: 100%;
     text-align: left;
     list-style-position: inside;
+    padding: 5px 10px;
 }
 
 /*#down-clues li.visible, #across-clues li.visible {
@@ -269,17 +325,19 @@ ul {
 }
 
 .highlighted-clue {
-    background-color: #a6e9cc;
+    background-color: #c6ecff;
     font-weight: bold;
   }
 
 .highlighted {
-    background-color: #a6e9cc !important; /* bright yellow */
+    background-color: #fff6d6 !important; /* bright yellow */
 }
 
+/* -----NAV BAR -----*/
 .navbar {
-    background: #000;
-    height: 80px;
+    background: #454851;
+    height: 70px;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -292,12 +350,14 @@ ul {
 .navbar__container {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     height: 80px;
     z-index: 1;
     width: 100%;
     max-width: 1300px;
-    margin: 0;
     padding: 0 50px;
+    margin: 0 auto;
+    flex-wrap: wrap;   
 }
 
 #navbar__logo {
@@ -322,10 +382,14 @@ ul {
 
 .navbar__menu {
     display: flex;
+    flex: 2;
+    justify-content: space-evenly;
     align-items: center;
     list-style: none;
     text-align: center;
-    gap: 20px;
+    height: 100%;
+    gap: 10px;
+    
 }
 
 .navbar__item {
@@ -336,24 +400,21 @@ ul {
     color: #fff;
     display: flex;
     align-items: center;
-    justify-content: center;
     text-decoration: none;
-    padding: 0 1rem;
+    padding: 1rem;
     height: 100%;
-    font-family: "TreasureMapDeadhand";
     font-size: 30px;
 }
 
 .navbar__home {
     color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: left;
+    font-size: 32px;
     text-decoration: none;
-    margin-left: 30px;
-    height: 100%;
-    font-family: "TreasureMapDeadhand";
-    font-size: 40px;
+    padding: 1rem;
+    display: flex;
+    align-items: center; 
+    height: 100%; 
+    width: fit-content;
 }
 
 .navbar__bttn {
@@ -368,10 +429,10 @@ ul {
     justify-content: center;
     align-items: center;
     text-decoration: none;
-    font-family: "TreasureMapDeadhand";
+    font-family: "Roboto";
     font-size: 30px;
     padding: 10px 15px;
-    height: 100%;
+    height: 90%;
     width: 150px;
     border: none;
     outline: none;
@@ -381,24 +442,32 @@ ul {
 }
 
 .nav__button:hover {
-    background: #3f7b62;
+    background: #A3E7FC;
     transition: all 0.3s ease;
 }
 
 .navbar__links:hover {
-    color: #3f7b62;
+    color: #A3E7FC;
     transition: all 0.3s ease;
 }
 
+.navbar__home:hover {
+    color: #A3E7FC;
+}
+/* ----- ----- */
+
 .header-background{
-    background-color: #6ba68c;
+    background-color: #454851;
+    color: #fff;
     margin-top: 0;
-    font-family: "TreasureMapDeadhand";
+    font-family: "Roboto";
     font-size: 25px;
     padding: 10px;
     border-radius: 6px 6px 0px 0px;
 }
 
+
+/* CELLS */
 .row {
     display: flex;
   }
@@ -407,14 +476,15 @@ ul {
     position: relative;
     width: 100%;
     height: 100%;
+    aspect-ratio: 1/1;
     border: none /*1px solid #beaeec*/;
-    font-size: 10vw;
+    font-size: calc(3vw);
     text-align: center;
     box-sizing: border-box;
 }
 
 .cell:focus {
-    outline: 3px solid #235e44;
+    outline: 3px solid #fdcb0b;
 }
 
 .cell {
@@ -434,13 +504,14 @@ ul {
     border: none;
     outline: none;
     background-color: #fff;
+    font-size: 100%;
   }
   
 .clue-number {
     position: absolute;
     top: 4px;
     left: 4px;
-    font-size: calc(0.5em + 2vw);
+    font-size: calc(1.5vw);
     color: black;
     z-index: 10;
   }
@@ -452,7 +523,20 @@ ul {
     aspect-ratio: 1 / 1;
 }
 
+/* ADS */
+.ads {
+    display: block;
+    align-content: center;
+    width: 100%;
+    flex: 1;
+}
+
+.ads img {
+    width: 70vw;
+}
+
 @media screen and (max-width: 800px) {
+    /* ----- NAV BAR ----- */
     .navbar__container {
         display:flex;
         justify-content: space-between;
@@ -483,7 +567,7 @@ ul {
         opacity: 1;
         transition: all 0.5s ease;
         z-index: 99;
-        height: 60vh;
+        height: fit-content;
         font-size: 1.6rem;
     }
 
@@ -501,6 +585,7 @@ ul {
 
     .navbar__item {
         width: 100%;
+        
     }
 
     .navbar__links {
@@ -544,21 +629,21 @@ ul {
     #mobile-menu.is-active .bar:nth-child(3) {
         transform: translateY(-8px) rotate(-45deg);
     }
+    /* ----- NAV BAR ----- */
 
     .left-side {
         display: flex;
         flex-direction: column;
         align-items: center;
-        width: 90vw;
-        margin: auto;
-        flex-grow: 1;
+        width: 80%;
+        margin: 0;
     }
 
     .puzzle-area{
         display: flex;
         flex-direction: column;
         align-items: center;
-        width: 90vw;
+        width: 80vw;
         /*max-width: 1000px;
         min-width: 400px;*/
         margin: auto;
@@ -566,14 +651,14 @@ ul {
     }
 
     #puzzle-container {
-        width: 90%;
-        padding: 10px;
-        margin: 5px;
+        height: fit-content;
+        width: fit-content;
+        margin: 0;
         }
 
     #clue-section {
-        width: 90%;
-        margin: 0px;
+        width: 80%;
+        margin: auto;
         padding: 0px;
     }
 
@@ -582,7 +667,13 @@ ul {
         margin: 5px 0px;
     }
 
-    .titlepage {
-        display: none;
+    /* ----- CELLS ----- */
+    .cell, .black-cell {
+        font-size: 30px;
     }
+
+    .clue-number {
+        font-size: 17px;
+      }
+    /* ----- ----- */
 }

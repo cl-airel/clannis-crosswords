@@ -1,7 +1,7 @@
 let lastClickedCell = null, lastDirection = "across";
 
 import { addAutoCheckListeners, isValidCell } from './inputHandlers.js'
-import { setupChecker } from './crossword.js';
+import { setupChecker, getRandomImage } from './crossword.js';
 import { gameState } from './gameState.js'
 
 export async function loadPuzzle() {
@@ -9,12 +9,13 @@ export async function loadPuzzle() {
   const puzzle = await response.json();
 
   gameState.currentPuzzle = puzzle;
+  gameState.currentPuzzleID = puzzle.id;
 
   renderPuzzle(puzzle);
   displayClues(puzzle);
   setupChecker(puzzle);
   addAutoCheckListeners(puzzle);
-
+  getRandomImage();
   return puzzle;
 }
 

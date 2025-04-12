@@ -1,4 +1,6 @@
 // timer.js
+import { toggleClues } from './crossword.js'
+
 let timerRunning = false;
 let timerInterval;
 let timeElapsed = 0;
@@ -7,11 +9,21 @@ export function startTimer() {
   if (timerRunning) return;
   timerRunning = true;
   timerInterval = setInterval(updateTimer, 1000);
+  toggleClues(true);
+  icon.innerHTML = "&#10074;&#10074;";
 }
 
 export function stopTimer() {
   clearInterval(timerInterval);
   timerRunning = false;
+  toggleClues(false); 
+  icon.innerHTML = '&#9658;';
+}
+
+export function resetTimer() {
+  clearInterval(timerInterval);
+  timerRunning = false;
+  timeElapsed = 0;
 }
 
 export function isTimerRunning() {
@@ -29,4 +41,8 @@ export function updateTimer() {
 
 function padZero(num) {
   return num < 10 ? `0${num}` : num;
+}
+
+export function getElapsedTime() {
+  return timeElapsed;
 }
