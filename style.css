@@ -22,7 +22,7 @@ grey #454851
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Roboto' !important;
+    font-family: 'Roboto';
 }
 
 
@@ -83,7 +83,6 @@ input[type=text]{
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    border: 3px solid #f1f1f1;
     z-index: 999;
 }
 
@@ -93,12 +92,18 @@ input[type=text]{
     width: 50vw;
     height: 60vw;
     padding: 10px;
-    background-color: #c0c3cb;
-
+    background-color: #c8bfe6;
+    border-radius: 6px;
+    border: 5px solid #887fa6;
   }
 
+.leaderboard-container h1{
+    margin: 10px;
+}
+
 table, td, th {
-    border: 1px solid;
+    border: 2px solid #887fa6;
+    border-radius: 1px;
 }
 
 table {
@@ -551,7 +556,7 @@ ul {
     position: absolute;
     top: 4px;
     left: 4px;
-    font-size: calc(1.5vw);
+    font-size: 10%;
     color: black;
     z-index: 10;
   }
@@ -575,6 +580,83 @@ ul {
 .ads img {
     width: 70vw;
 }
+
+/* ----- ABOUT US ----- */
+.aboutus-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 5px 10px;
+    margin-bottom: 20px;
+    padding: 10px;
+    text-align: left;
+}
+
+.aboutus-sub {
+    color: #454851;
+    margin: 5px 0;
+    background-color: #C6ECFF;
+    padding: 5px 10px;
+    border-radius: 16px;
+    border-style: solid;
+    border-width: 10px;
+    border-color: #A3E7fc;
+    width: 60vw;
+}
+
+.aboutus-sub h1 {
+    margin: 0;
+    text-align: center;
+}
+
+.aboutus-sub p{
+    margin: 10px 0;
+    font-family: Helvetica;
+}
+
+.aboutus-sub dl{
+    text-align: center;
+    margin: 10px 0;
+}
+
+.aboutus-subrow {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+}
+
+.aboutus-subsub {
+    flex: 1;
+    margin: 5px 10px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+
+.aboutus-subsub dt{
+    text-align: center;
+    margin: 10px 0;
+}
+
+.aboutus-subsub img {
+    width: 100%;
+    border-radius: 6px;
+}
+
+.img-container {
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.img-container img {
+    width: 100%;
+}
+/* ----- ----- */
 
 @media screen and (max-width: 800px) {
     /* ----- NAV BAR ----- */
@@ -716,5 +798,11 @@ ul {
     .clue-number {
         font-size: 17px;
       }
+    /* ----- ----- */
+
+    /* ----- ABOUT US ----- */
+    .aboutus-sub {
+        width: 85vw;
+    }
     /* ----- ----- */
 }

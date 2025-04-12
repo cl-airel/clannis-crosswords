@@ -37,7 +37,8 @@ export function renderPuzzle(puzzle) {
   const container = document.getElementById("puzzle-container");
   container.style.setProperty('--cols', puzzle.size.cols);
   container.style.setProperty('--rows', puzzle.size.rows); 
-
+  gameState.puzzle = puzzle;
+  
   puzzle.grid.forEach((row, rowIndex) => {
     row.forEach((cell, colIndex) => {
       const cellWrapper = document.createElement("div");
@@ -59,6 +60,7 @@ export function renderPuzzle(puzzle) {
         gameState.currentRow = rowIndex;
         gameState.currentCol = colIndex;
         gameState.currentDirection = lastDirection;
+        
 
         highlightWord(rowIndex, colIndex, lastDirection);
       });
@@ -125,6 +127,7 @@ export function displayClues(puzzle) {
     downList.appendChild(li);
   });
 }
+
 
 export function highlightClueForCell(row, col) {
   document.querySelectorAll(".clue").forEach(clue => {

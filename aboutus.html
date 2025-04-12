@@ -1,44 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css" />
+  <!-- This is for the header of the website and metadata (don't ask)-->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Custom Crossword</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
+
 <body>
-    <!-- This is where the body of our webpage exists -->
-  <img class="banner" src="/imgs/banner-example.png" alt="really cool banner">
+<!-- This is where the body of our webpage exists -->
+  <img class="banner" src="/imgs/banner.jpg" alt="bt x-words">
 
   <!-- Navigation Bar -->
   <nav class="navbar">
     <div class="navbar__container">
-        <a href="/" class="navbar__home">Home</a>
+
+      <a href="/" class="navbar__home">Home</a>
 
       <div class="navbar__toggle" id="mobile-menu">
         <span class="bar"></span> <span class="bar"></span> <span class="bar"></span>
       </div>
+
       <ul class="navbar__menu">
-        <li class="navbar__item">
-          <a href="/archive.html" class="navbar__links">Archive</a>
+       <li class="navbar__item">
+          <a href="/specialpuzzles2.html" class="navbar__links">Special Puzzles</a>
         </li>
-        <li class="navbar__item">
-          <a href="/specialpuzzles.html" class="navbar__links">Special Puzzles</a>
+        <li class="dropdown">
+          <button class="navbar__links">Archive</button>
+          <div class="dropdown-content">
+            <a href="/specialpuzzles1.html"> Alg & Friends </a>
+            <a href="/archive.html"> April 6th Mini </a>
+          </div>
         </li>
         <li class="navbar__item">
           <a href="/aboutus.html" class="navbar__links">About Us</a>
         </li>
-        <li class="navbar__bttn">
-          <a href="/" class="nav__button">Sign In</a>
-        </li>
+        <!-- <li class="navbar__bttn">
+          <button onclick="document.getElementById('id01').style.display='block'" class="nav__button">Sign In</button>
+          <div id="id01" class="modal">
+            <form class="modal-content animate">
+              <div class="imgcontainer">
+                <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+              </div>
+              <div class="container">
+                <label for="uname"> 
+                  <b>Username</b>
+                </label>
+                <input type="text" id="username" placeholder="Enter username" name="uname" required>
+                <button type="submit" id="submit-username">Login</button>
+                <label>
+                  <input type="checkbox" checked="checked">Remember me
+                </label>
+              </div>
+
+            </form>
+          </div>
+        </li> -->
       </ul>
     </div>
   </nav>
 
-  this is the about us page!
+<div class="aboutus-main">
+  <div class="aboutus-sub">
+    <h1> Mission </h1>
+    <p>
+      Started in a small apartment in East Lansing, BTXwords represents a renaissance of human expression. In a world flooded with monotonous websites, a window of charm and character has been blown open presenting a life raft for those seeking to escape the deep currents of the algorithmic website. 
+    </p>
 
+    <p>
+      BTXwords grows orthogonally to the sea of normality. Sprouting out from the water’s surface, it distinguishes itself from the lifeless websites created by professional teams and template tools. BTXwords instead was created by two individuals with no experience in website design and development in less than a week’s time span. Rather than being fueled by greed, it was powered by the desire to create an alternative that is focused on evoking emotion. Joy, laughter, and disgust are all welcome at BTXwords. Whether this is the highlight of your day, or simply a new wrinkle in your otherwise ironed-out work schedule, we appreciate your time and interaction. We hope you continue to join us in this experiment as we battle to keep individualism and expression alive. 
+    </p>
+    <div class="aboutus-subrow">
+      <div class="aboutus-subsub">
+        <img src="photos/IMG_6463.jpeg" alt="image of c and j">
+      </div>
+      <div class="aboutus-subsub">
+        <img src="photos/IMG_6430.jpeg" alt="image of c and j shaking hands">
+      </div>
+      <div class="aboutus-subsub">
+        <img src="photos/IMG_6446.jpeg" alt="silly image of c and j">
+      </div>
+    </div>
+
+  </div>
+
+  <div class="aboutus-sub">
+    <h1> Who are we? </h1>
+    <div class="aboutus-subrow">
+      <div class="aboutus-subsub">
+        <div class="img-container"><img src="photos/IMG_7987.jpg" alt="image of claire"></div>
+        <p>Claire is 22 years old and planning to pursue a PhD in Physics at Tufts University this fall.</p>
+        <dl>
+          <dt><b>Favorite Food:</b> soft-boiled eggs </dt>
+          <dt><b>Favorite One Piece Character:</b> Tony Tony Chopper </dt>
+          <dt><b>Fun Fact:</b> Visibly hesitates when stepping on escalators </dt>
+        </dl>
+      </div>
+      <div class="aboutus-subsub"> 
+        <div class="img-container"><img src="photos/jannisheadshot.png" alt="image of jannis"></div>
+        <p>Jannis is 6'2" and pursuing a PhD in Plant Biology at the University of California Riverside.</p>
+        <dl>
+          <dt><b>Favorite Pass Time:</b> Joshing aroung </dt>
+          <dt><b>Fun Fact:</b> Knows Nicki's verse by heart on Only by Drake </dt>
+          <dt><b>Bonus Fact:</b> Absent parent of a young turtle </dt>
+        </dl>
+      </div>
+    </div>
+  </div>
+
+  <div class="aboutus-sub">
+    <div class="aboutus-subrow">
+      <div class="aboutus-subsub">
+        <h1> Credits </h1>
+        <dl>
+          <dt> <b>Executive Board:</b> Claire Lundy and Jannis Jacobs </dt>
+          <dt> <b>Website Design:</b> Claire Lundy and Jannis Jacobs </dt>
+          <dt> <b>Website Development:</b> Claire Lundy </dt>
+          <dt><b>Art and Creative Design:</b> Jannis Jacobs </dt>
+          <dt><b>Crosswords:</b> Claire Lundy and Jannis Jacobs </dt>
+        </dl>
+      </div>
+      <div class="aboutus-subsub">
+        <img src="photos/IMG_7663.jpeg" alt="image of claire and jannis">
+      </div>
+    </div>
+  </div>
+
+  <div class="aboutus-sub">
+    <div class="aboutus-subrow">
+      <div class="aboutus-subsub">
+        <img src="photos/IMG_6661.jpg" alt="another image of claire and jannis">
+      </div>
+      <div class="aboutus-subsub">
+        <h1> Acknowledgements </h1>
+        <p>
+          Special thanks to Jannis' mom for bringing up crosswords last weekend, Mr. GPT for getting us through some hard times, and our friends and family for being worth making this for!
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="aboutus-sub">
+    <h1>Want to Contribute?</h1>
+    <p>
+      We welcome guest editors, advertisers, artists, and any other features! Please reach out with serious inquiries only. Thank you for checking out the website!
+    </p>
+  </div>
+</div>
   
-
-  <script src="crossword.js"></script>
+  
+  <script type="module" src="crossword.js"></script>
+  <script type="module" src="puzzle.js"></script>
+  <script type="module" src="inputHandlers.js"></script>
 </body>
 </html>

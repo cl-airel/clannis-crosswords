@@ -24,19 +24,24 @@ function handleInput(e) {
   const value = input.value;
 
   const row = parseInt(input.dataset.row);
-  const col = parseInt(input.dataset.col);  
+  const col = parseInt(input.dataset.col);
 
-  if (value) {
-      if (isCurrentWordComplete(row, col, gameState.currentDirection)) {
-          console.log("complete");
-          //moveToNextWord(gameState.currentPuzzle);
-      } else {
-          moveToNextCell(row, col, gameState.currentDirection);
-      }
-  }
+
+
+  //if (value) {
+  //    if (isCurrentWordComplete(row, col, gameState.currentDirection)) {
+  //        console.log("complete");
+  //        //moveToNextWord(gameState.currentPuzzle);
+  //    } else {
+  //        moveToNextCell(row, col, gameState.currentDirection);
+  //    }
+ //}
+  //if (value) {
+    //moveToNextCell(row, col, gameState.currentDirection)
+  //}
 
   if (row !== null && col !== null) {
-      highlightWord(row, col, gameState.currentDirection, gameState.currentPuzzle);
+      //newHighlightWord(row, col, gameState.currentDirection);
   }
   const inputs = document.querySelectorAll('.cell:not(.black-cell)');
   const allFilled = Array.from(inputs).every(cell => cell.value.trim() !== '');
@@ -48,49 +53,53 @@ function handleInput(e) {
 }
 
 function handleKeyDown(e) {
-    const input = e.target;
-    const row = parseInt(input.dataset.row);
-    const col = parseInt(input.dataset.col);
+  const input = e.target;
+  const row = parseInt(input.dataset.row);
+  const col = parseInt(input.dataset.col);
 
-    if (/^[a-zA-Z]$/.test(e.key)) {
-        return;
-    }
+  if (/^[a-zA-Z]$/.test(e.key)) {
+    setTimeout(() => {
+      newMoveToNextCell(row, col, gameState.currentDirection, gameState.puzzle);
+    }, 0);
+  }
 
-    if (e.key === 'Backspace') {
-        if (input.value === '') {
-        moveToPreviousCell(row, col, gameState.currentDirection);
-        } else {
+  if (e.key === 'Backspace') {
+      if (input.value === '') {
+        setTimeout(() => {
+          newMoveToPreviousCell(row, col, gameState.currentDirection, gameState.puzzle);
+        }, 0);
+      } else {
         input.value = '';
         e.preventDefault();
-        }
-    }
+      }
+  }
 
-    const directions = {
-        ArrowLeft: [0, -1],
-        ArrowRight: [0, 1],
-        ArrowUp: [-1, 0],
-        ArrowDown: [1, 0]
-    };
+  const directions = {
+      ArrowLeft: [0, -1],
+      ArrowRight: [0, 1],
+      ArrowUp: [-1, 0],
+      ArrowDown: [1, 0]
+  };
 
-    if (directions[e.key]) {
-        e.preventDefault();
-        const [dRow, dCol] = directions[e.key];
-        const nextInput = document.querySelector(
-        `input[data-row="${row + dRow}"][data-col="${col + dCol}"]`
-        );
-        if (nextInput && !nextInput.classList.contains("black-cell")) {
-        nextInput.focus();
-        gameState.currentRow = row + dRow;
-        gameState.currentCol = col + dCol;
-        }
-    }
+  if (directions[e.key]) {
+      e.preventDefault();
+      const [dRow, dCol] = directions[e.key];
+      const nextInput = document.querySelector(
+      `input[data-row="${row + dRow}"][data-col="${col + dCol}"]`
+      );
+      if (nextInput && !nextInput.classList.contains("black-cell")) {
+      nextInput.focus();
+      gameState.currentRow = row + dRow;
+      gameState.currentCol = col + dCol;
+      }
+  }
 
-    if (e.key === 'Tab') {
-        console.log('tab')
-        e.preventDefault();
-        moveToNextWord();
-        return;
-    }
+  if (e.key === 'Tab') {
+    console.log('tab')
+    e.preventDefault();
+    moveToNextWord();
+    return;
+  }
 }
 
 function handleFocus(e) {
@@ -100,11 +109,82 @@ function handleFocus(e) {
 
     const right = document.querySelector(`input[data-row="${gameState.currentRow}"][data-col="${gameState.currentCol + 1}"]`);
     const down = document.querySelector(`input[data-row="${gameState.currentRow + 1}"][data-col="${gameState.currentCol}"]`);
-    gameState.currentDirection = right && !right.classList.contains("black-cell") ? "across" : "down";
+    //gameState.currentDirection = right && !right.classList.contains("black-cell") ? "across" : "down";
 
     highlightWord(gameState.currentRow, gameState.currentCol, gameState.currentDirection, gameState.currentPuzzle);
 }
 //istg
+function newMoveToNextCell(row, col, direction, puzzle) {
+  const rows = puzzle.size.rows;
+  const cols = puzzle.size.cols;
+
+  while (true) {
+    if (direction === "across") {
+      col++;
+      if (col >= cols) {
+        col = 0;
+        row++;
+        if (row >= rows) {
+          row = 0;
+          col = 0;
+        }; // Reached end of puzzle
+      }
+    } else {
+      row++;
+      if (row >= rows) {
+        row = 0;
+        col++;
+        if (col >= cols) {
+          row = 0;
+          col = 0;
+        }; // Reached end of puzzle
+      }
+    }
+
+    const nextInput = document.querySelector(`input[data-row="${row}"][data-col="${col}"]`);
+    if (nextInput && !nextInput.classList.contains("black-cell")) {
+      nextInput.focus();
+      break;
+    }
+  }
+}
+
+function newMoveToPreviousCell(row, col, direction, puzzle) {
+  const rows = puzzle.size.rows;
+  const cols = puzzle.size.cols;
+
+  while (true) {
+    if (direction === "across") {
+      col--;
+      if (col < 0) {
+        col = cols - 1;
+        row --;
+        if (row < 0) {
+          col = cols -1;
+          row = rows -1;
+        }; // Reached end of puzzle
+      }
+    } else {
+      row--;
+      if (row < 0) {
+        row = rows - 1;
+        col--;
+        if (col < 0) {
+          col = cols - 1;
+          row = rows - 1;
+        }; // Reached end of puzzle
+      }
+    }
+
+    const nextInput = document.querySelector(`input[data-row="${row}"][data-col="${col}"]`);
+    if (nextInput && !nextInput.classList.contains("black-cell")) {
+      nextInput.focus();
+      break;
+    }
+  }
+}
+
+
 function moveToNextCell(row, col, direction) {
     const [dRow, dCol] = direction === 'across' ? [0, 1] : [1, 0];
     let nextRow = row + dRow;
