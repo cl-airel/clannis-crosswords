@@ -22,7 +22,7 @@
         {"number": 2, "row":0, "col":1, "clue": "To rudely awake someone"},
         {"number": 3, "row":0, "col":2, "clue": "Predict with context"},
         {"number": 4, "row":0, "col":3, "clue": "Where you might go to buy fish"},
-        {"number": 7, "row":0, "col":4, "clue": "Pig's home"}
+        {"number": 7, "row":2, "col":4, "clue": "Pig's home"}
       ]
     },
   

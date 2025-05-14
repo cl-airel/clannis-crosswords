@@ -1,5 +1,4 @@
 // timer.js
-import { toggleClues } from './crossword.js'
 
 let timerRunning = false;
 let timerInterval;
@@ -39,10 +38,24 @@ export function updateTimer() {
   return formatted;
 }
 
+export function getElapsedTime() {
+  return timeElapsed;
+}
+
 function padZero(num) {
   return num < 10 ? `0${num}` : num;
 }
 
-export function getElapsedTime() {
-  return timeElapsed;
+function toggleClues(show) {
+  //toggles visibility to visible/hidden when timer is running/stopped
+  const acrossClues = document.querySelectorAll('#across-clues li');
+  const downClues = document.querySelectorAll('#down-clues li');
+
+  acrossClues.forEach(clue => {
+    clue.style.visibility = show ? 'visible' : 'hidden';
+  });
+
+  downClues.forEach(clue => {
+    clue.style.visibility = show ? 'visible' : 'hidden';
+  });
 }

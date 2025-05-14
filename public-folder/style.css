@@ -59,309 +59,6 @@ input[type=text]{
     padding-top: 16px;
   }
 
-/* ----- LEADERBOARD ----- */
-.ldr-bttn {
-    background-color: #9488bb;
-    color: white;
-    padding: 16px 5px;
-    border: none;
-    cursor: pointer;
-    opacity: 0.6;
-    position: fixed;
-    bottom: 23px;
-    right: 28px;
-    width: 200px;
-}
-
-.ldr_bttn:hover {
-    opacity: 1;
-}
-  
-.form-popup {
-    display: none;
-    position: fixed;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 999;
-}
-
-.leaderboard-container {
-    display: inline-block;
-    max-width: 300px;
-    width: 50vw;
-    height: 60vw;
-    padding: 10px;
-    background-color: #c8bfe6;
-    border-radius: 6px;
-    border: 5px solid #887fa6;
-  }
-
-.leaderboard-container h1{
-    margin: 10px;
-}
-
-table, td, th {
-    border: 2px solid #887fa6;
-    border-radius: 1px;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-thead {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
-}
-
-leaderboard-table {
-    margin-top: 50px;
-}
-/* ----- -----*/
-
-  .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 99; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    padding-top: 60px;
-  }
-  
-  /* Modal Content/Box */
-  .modal-content {
-    background-color: #fefefe;
-    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-    border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
-  }
-  
-  /* The Close Button (x) */
-  .close {
-    position: absolute;
-    right: 25px;
-    top: 0;
-    color: #000;
-    font-size: 35px;
-    font-weight: bold;
-  }
-  
-  .close:hover,
-  .close:focus {
-    color: red;
-    cursor: pointer;
-  }
-  
-  /* Add Zoom Animation */
-  .animate {
-    -webkit-animation: animatezoom 0.6s;
-    animation: animatezoom 0.6s
-  }
-  
-  @-webkit-keyframes animatezoom {
-    from {-webkit-transform: scale(0)} 
-    to {-webkit-transform: scale(1)}
-  }
-    
-  @keyframes animatezoom {
-    from {transform: scale(0)} 
-    to {transform: scale(1)}
-  }
-  
-  /* Change styles for span and cancel button on extra small screens */
-  @media screen and (max-width: 300px) {
-    span.psw {
-       display: block;
-       float: none;
-    }
-    .cancelbtn {
-       width: 100%;
-    }
-  }
-
-  /* ----- MAIN CONTENT ----- */
-body {
-    text-align: center;
-    background-color: #fffdfd;
-    font-family: 'Roboto';
-}
-
-ul { 
-    list-style-type: none;
-    padding: 5px;
-}
-
-.banner {
-    display: block;
-    width: 100%;
-    margin: 0;
-}
-
-.titlepage {
-    font-family:'Roboto';
-    text-align: center;
-    font-size: 5vw;
-    margin-bottom: 5px;
-    flex: 1;
-}
-
-/* ----- PUZZLE TOOLBAR ----- */
-#puzzle-toolbar {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 5px;
-    background: #454851;
-    border-radius: 6px;
-    width: 100%;
-  }
-  
-  #puzzle-toolbar button {
-    height: 100%;
-    width: 100%;
-    padding: 0.5rem 1rem;
-    font-size: 1em;
-    cursor: pointer;
-    border: none;
-    border-radius: 6px;
-    background-color: #c8bfe6;
-    color: #000;
-    transition: background-color 0.2s;
-    margin: 7px;
-    font-family: "Roboto";
-  }
-  
-  #puzzle-toolbar button:hover {
-    background-color: #9185bc;
-  }
-/* ----- ----- */
-
-
-#congrats-message {
-    margin-top: 10px;
-    font-family: 'Pinyon Script';
-}
-
-#main-section{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    margin: 0px;
-    width: 100%;
-    padding: 10px;
-}
-
-.puzzle-area {
-    display: flex;
-    flex: 1;
-    flex-direction: row;
-    justify-content: center;
-    margin: 5px;
-    height: 40vh;
-}
-
-.left-side {
-    flex: 1;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    aspect-ratio: 1/1;
-    margin: 10px;
-    box-sizing: border-box;
-    text-align: left;
-}
-
-#puzzle-container {
-    display: grid;
-    gap: 2px;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    padding: 10px;
-    background-color: #454851;
-    grid-template-columns: repeat(var(--cols), 1fr);
-    grid-template-rows: repeat(var(--rows), 1fr); 
-    border-radius: 6px;
-    box-sizing: border-box;
-    margin-bottom: 5px;
-    }
-
-#clue-section {
-    flex:1;
-    flex-direction: column;
-    justify-content: flex-start;
-    margin: auto 10px auto 5px;
-    border-radius: 6px;
-    padding: 10px;
- }
-
-#down-clues, #across-clues {
-    overflow-y: auto;
-    background-color: #c0c3cb;
-    margin-bottom: 5px;
-    border-radius: 0px 0px 6px 6px;
-    padding: 5px 0;
-}
-
-#down-clues li, #across-clues li {
-    visibility: hidden;
-    margin-bottom: 10px;
-    font-size: 20px;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-    width: 100%;
-    text-align: left;
-    list-style-position: inside;
-    padding: 5px 10px;
-}
-
-.down-clues, .across-clues {
-    max-height: 300px; /* Adjust as needed */
-    overflow-y: auto;
-    background-color: #c0c3cb;
-    margin-bottom: 5px;
-    border-radius: 0px 0px 6px 6px;
-    padding: 0;
-    width: 100%;  
-}
-
-.across-clues h3, .down-clues h3 {
-    position: sticky;
-    top: 0;
-    background: #454851;
-    color: #fff;
-    margin: 0;
-    padding: 5px;
-    z-index: 1;
-    border-radius: 6px 6px 0px 0px;
-    /*font-size: 25px;*/
-  }
-  
-/*#down-clues li.visible, #across-clues li.visible {
-    opacity: 1;
-}*/
-
-#down-clues li:hover, #across-clues li:hover {
-    background-color: #f0f0f0;
-}
-
-.highlighted-clue {
-    background-color: #c6ecff;
-    font-weight: bold;
-  }
-
-.highlighted {
-    background-color: #fff6d6 !important; /* bright yellow */
-}
-
 /* -----NAV BAR -----*/
 .navbar {
     background: #454851;
@@ -512,6 +209,338 @@ ul {
 
 /* ----- ----- */
 
+/* ----- LEADERBOARD ----- */
+.ldr-bttn {
+    background-color: #9488bb;
+    color: white;
+    padding: 16px 5px;
+    border: none;
+    cursor: pointer;
+    opacity: 0.6;
+    position: fixed;
+    bottom: 23px;
+    right: 28px;
+    width: 200px;
+    z-index: 99;
+}
+
+.ldr_bttn:hover {
+    opacity: 1;
+}
+  
+.form-popup {
+    display: none;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 999;
+    height: 60vh;
+}
+
+.leaderboard-container {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    background-color: #c8bfe6;
+    border-radius: 6px;
+    border: 5px solid #887fa6;
+  }
+
+.leaderboard-container h1{
+    margin: 10px;
+}
+
+table, td, th {
+    border: 2px solid #887fa6;
+    border-radius: 1px;
+    word-wrap: break-word;
+    white-space: normal;
+    padding: 4px;
+}
+
+table {
+    width: fit-content;
+    border-collapse: collapse;
+}
+
+thead {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+leaderboard-table {
+    margin-top: 50px;
+    width: auto;
+    table-layout: fixed;
+}
+/* ----- -----*/
+
+  .modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 99; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    padding-top: 60px;
+  }
+  
+  /* Modal Content/Box */
+  .modal-content {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+  }
+  
+  /* The Close Button (x) */
+  .close {
+    position: absolute;
+    right: 25px;
+    top: 0;
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: red;
+    cursor: pointer;
+  }
+  
+  /* Add Zoom Animation */
+  .animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
+  }
+  
+  @-webkit-keyframes animatezoom {
+    from {-webkit-transform: scale(0)} 
+    to {-webkit-transform: scale(1)}
+  }
+    
+  @keyframes animatezoom {
+    from {transform: scale(0)} 
+    to {transform: scale(1)}
+  }
+  
+  /* Change styles for span and cancel button on extra small screens */
+  @media screen and (max-width: 300px) {
+    span.psw {
+       display: block;
+       float: none;
+    }
+    .cancelbtn {
+       width: 100%;
+    }
+  }
+
+  /* ----- MAIN CONTENT ----- */
+body {
+    text-align: center;
+    background-color: #fffdfd;
+    font-family: 'Roboto';
+    font-size: 1rem;
+}
+
+ul { 
+    list-style-type: none;
+    padding: 0.5rem;
+}
+
+.banner {
+    display: block;
+    width: 100%;
+    margin: 0;
+}
+
+.titlepage {
+    font-family:'Roboto';
+    text-align: center;
+    font-size: clamp(1.5rem, 5vw, 3rem);
+    margin-bottom: 0.5rem;
+    flex: 1;
+}
+
+/* ----- PUZZLE TOOLBAR ----- */
+#puzzle-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+    background: #454851;
+    border-radius: 0.5rem;
+    width: 100%;
+    max-width: 700px;
+    margin-inline: auto;
+  }
+  
+  #puzzle-toolbar button {
+    flex: 1 1 100px;
+    padding: 0.5rem 1rem;
+    font-size: 1em;
+    cursor: pointer;
+    border: none;
+    border-radius: 0.5rem;
+    background-color: #c8bfe6;
+    color: #000;
+    transition: background-color 0.2s;
+    margin: 0.5rem;
+    min-width: 100px;
+    max-width: 200px;
+    font-family: "Roboto", sans-serif;
+  }
+  
+  #puzzle-toolbar button:hover {
+    background-color: #9185bc;
+  }
+/* ----- ----- */
+
+
+#congrats-message {
+    margin-top: 10px;
+    font-family: 'Pinyon Script';
+}
+
+#main-section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    width: 100%;
+    padding: 1rem;
+    padding-top: 0;
+}
+
+.puzzle-area {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: stretch;
+    margin: auto;
+    /*height: 60px;*/
+    width: 100%;
+    max-width: 1132px;
+    padding-bottom: 1rem;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.left-side {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    align-self: flex-start;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 10px;
+    box-sizing: border-box;
+    text-align: left;
+    min-height: 0;
+}
+
+#puzzle-container {
+    display: grid;
+    gap: 2px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+    background-color: #454851;
+    grid-template-columns: repeat(var(--cols), 1fr);
+    grid-template-rows: repeat(var(--rows), 1fr); 
+    border-radius: 6px;
+    box-sizing: border-box;
+    margin-bottom: 5px;
+    }
+
+#clue-section {
+    flex:1;
+    flex-direction: column;
+    flex-grow: 1;
+    align-self: flex-start;
+    justify-content: flex-start;
+    margin: auto 10px auto 5px;
+    border-radius: 6px;
+    height: 100%;
+    max-height: 100%;
+    box-sizing: border-box;
+ }
+
+#down-clues, #across-clues {
+    flex: 1;
+    overflow-y: auto;
+    background-color: #c0c3cb;
+    margin-bottom: 0.5rem;
+    border-radius: 0 0 0.5rem 0.5rem;
+    padding: 0.5rem 0;
+    width: 100%;
+    min-height: 0;
+}
+
+.down-clues li, .across-clues li {
+    visibility: hidden;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    width: 100%;
+    text-align: left;
+    list-style-position: inside;
+    padding: 0.5rem 1rem;
+}
+
+.down-clues, .across-clues {
+    max-height: 200px; /* Adjust as needed */
+    overflow-y: auto;
+    background-color: #c0c3cb;
+    margin-bottom: 5px;
+    border-radius: 0px 0px 6px 6px;
+    padding: 0;
+    width: 100%;  
+}
+
+.across-clues h3, .down-clues h3 {
+    position: sticky;
+    top: 0;
+    background: #454851;
+    color: #fff;
+    margin: 0;
+    padding: 5px;
+    z-index: 1;
+    border-radius: 6px 6px 0px 0px;
+    /*font-size: 25px;*/
+  }
+  
+/*#down-clues li.visible, #across-clues li.visible {
+    opacity: 1;
+}*/
+
+#down-clues li:hover, #across-clues li:hover {
+    background-color: #f0f0f0;
+}
+
+.highlighted-clue {
+    background-color: #c6ecff;
+    font-weight: bold;
+  }
+
+.highlighted {
+    background-color: #fff6d6 !important; /* bright yellow */
+}
+
 /* CELLS */
 .row {
     display: flex;
@@ -523,7 +552,7 @@ ul {
     height: 100%;
     aspect-ratio: 1/1;
     border: none /*1px solid #beaeec*/;
-    font-size: calc(3vw);
+    font-size: clamp(1rem, 2vw, 2.5rem);
     text-align: center;
     box-sizing: border-box;
 }
@@ -549,14 +578,13 @@ ul {
     border: none;
     outline: none;
     background-color: #fff;
-    font-size: 100%;
   }
   
 .clue-number {
     position: absolute;
     top: 4px;
     left: 4px;
-    font-size: 10%;
+    font-size: 0.6em;
     color: black;
     z-index: 10;
   }
@@ -575,10 +603,13 @@ ul {
     align-content: center;
     width: 100%;
     flex: 1;
+    position: relative;
 }
 
 .ads img {
-    width: 70vw;
+    width: 90%;
+    max-width: 600px;
+    height: auto;
 }
 
 /* ----- ABOUT US ----- */
@@ -752,14 +783,14 @@ ul {
     #mobile-menu.is-active .bar:nth-child(3) {
         transform: translateY(-8px) rotate(-45deg);
     }
-    /* ----- NAV BAR ----- */
+    /* ----- ----- */
 
     .left-side {
         display: flex;
         flex-direction: column;
         align-items: center;
         width: 80%;
-        margin: 0;
+        margin: auto;
     }
 
     .puzzle-area{
@@ -785,24 +816,45 @@ ul {
         padding: 0px;
     }
 
+ 
+    /* ----- PUZZLE TOOLBAR ----- */
     #puzzle-toolbar {
         width: 100%;
+        justify-content: space-evenly;
         margin: 5px 0px;
+        flex-wrap: nowrap;
     }
+
+
+    #puzzle-toolbar button {
+        flex: 1 1 25%; /* Allow buttons to shrink and grow with a max width of 30% of the container */
+        font-size: 0.5em; /* Adjust font size for smaller screens */
+        width: 27%;
+    }
+
+    /* ----- ----- */
 
     /* ----- CELLS ----- */
     .cell, .black-cell {
-        font-size: 30px;
+        font-size: 1em;
     }
 
     .clue-number {
-        font-size: 17px;
+        top: 0.01em;
+        left: 0.01em;
+        transform: scale(0.6); 
+        font-size: min(2.5vw, 12px);
+        
       }
+
     /* ----- ----- */
 
     /* ----- ABOUT US ----- */
     .aboutus-sub {
         width: 85vw;
+    }
+    .aboutus-subrow {
+        flex-direction: column;
     }
     /* ----- ----- */
 }

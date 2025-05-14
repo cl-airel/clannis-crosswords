@@ -79,6 +79,7 @@
       {"number": 38, "row": 7, "col": 3, "clue": "Like an old city's streets"},
       {"number": 42, "row": 8, "col": 4, "clue": "Movie home for Spiderman and Iron Man"},
       {"number": 44, "row": 8, "col": 9, "clue": "Wet warfare"},
+      {"number": 46, "row": 9, "col": 5, "clue": "Discount"},
       {"number": 48, "row": 10, "col": 0, "clue": "Alternative to a traditional key"},
       {"number": 49, "row": 10, "col": 1, "clue": "Make a mistake"},
       {"number": 50, "row": 10, "col": 2, "clue": "Busy creature"},

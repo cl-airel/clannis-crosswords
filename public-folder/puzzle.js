@@ -3,7 +3,7 @@ let lastClickedCell = null, lastDirection = "across";
 import { addAutoCheckListeners, isValidCell } from './inputHandlers.js'
 import { setupChecker, getRandomImage, loadLeaderboard } from './crossword.js';
 import { gameState } from './gameState.js'
-//everything worked here
+
 export async function loadPuzzle() {
   console.log("Puzzle ID:", document.body.dataset.puzzleId)
   gameState.puzzleId = document.body.dataset.puzzleId;
@@ -14,8 +14,6 @@ export async function loadPuzzle() {
     if (!response.ok) {
       throw new Error(`Puzzle ${filePath} not found :(`)
     }
-
-  //const response = await fetch('puzzle-archive/test_puzzle.json');
   const puzzle = await response.json();
 
   gameState.currentPuzzle = puzzle;
@@ -50,18 +48,21 @@ export function renderPuzzle(puzzle) {
       input.dataset.row = rowIndex;
       input.dataset.col = colIndex;
 
+      input.setAttribute("autocomplete", "off");
+      input.setAttribute("inputmode", "text");
+      input.setAttribute("autocapitalize", "off");
+
       input.addEventListener("click", () => {
         const clickedKey = `${rowIndex}-${colIndex}`;
-        lastDirection = (lastClickedCell === clickedKey)
-          ? (lastDirection === "across" ? "down" : "across")
-          : "across";
+        if (lastClickedCell === clickedKey) {
+          lastDirection = lastDirection === "across" ? "down" : "across";
+        }
         lastClickedCell = clickedKey;
 
         gameState.currentRow = rowIndex;
         gameState.currentCol = colIndex;
         gameState.currentDirection = lastDirection;
         
-
         highlightWord(rowIndex, colIndex, lastDirection);
       });
 
@@ -91,6 +92,7 @@ export function renderPuzzle(puzzle) {
 }
 
 function getClueNumber(puzzle, rowIndex, colIndex) {
+//finds and assigns a number to the across and down clues based on the information in the .json file
   for (const clue of puzzle.clues.across) {
     if (clue.row === rowIndex && clue.col === colIndex) return clue.number;
   }
@@ -100,7 +102,8 @@ function getClueNumber(puzzle, rowIndex, colIndex) {
   return null;
 }
 
-export function displayClues(puzzle) {
+function displayClues(puzzle) {
+//correlates and displays the clues for each word
   const acrossList = document.getElementById("across-clues");
   const downList = document.getElementById("down-clues");
 
@@ -141,7 +144,10 @@ export function highlightClueForCell(row, col) {
     : `clue-down-${row}-${col}`;
 
   const clueElement = document.getElementById(clueId);
-  if (clueElement) clueElement.classList.add("highlighted-clue");
+
+  if (clueElement) {
+    clueElement.classList.add("highlighted-clue")
+  };
 }
 
 export function highlightWord(row, col, direction) {

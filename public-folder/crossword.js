@@ -1,7 +1,7 @@
 // Main file that loads all of the puzzles n whatnot
-import { startTimer, stopTimer, updateTimer, isTimerRunning, getElapsedTime } from './timer.js';
-import { loadPuzzle, highlightWord, focusFirstEmptyCell, highlightClueForCell } from './puzzle.js'
-import { addAutoCheckListeners } from './inputHandlers.js';
+import { startTimer, stopTimer, isTimerRunning, getElapsedTime } from './timer.js';
+import { loadPuzzle, focusFirstEmptyCell, highlightClueForCell } from './puzzle.js'
+//import { addAutoCheckListeners } from './inputHandlers.js';
 import { gameState } from './gameState.js'
 import { collection, addDoc, getDocs, query, orderBy, limit, serverTimestamp, where } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
 import { db } from "./init-firestore.js"
@@ -31,13 +31,9 @@ export function setupChecker() {
   });
 }
 
-//let currentRow = null, currentCol = null;
-//let currentDirection = "across";
-
 loadPuzzle().then((loadedPuzzle) => {
   gameState.currentPuzzle = loadedPuzzle;
 
-  //addAutoCheckListeners(puzzle);
   setupChecker();
 
   const firstClue = gameState.currentPuzzle.clues.across[0];
@@ -102,7 +98,7 @@ const usernameDisplay = document.getElementById('username-display');
 //    }
 //});
 
-//==CHECK, RESET, and SAVE==//
+//== CHECK, RESET, and SAVE ==//
 export async function checkAnswers() {
   const inputs = document.querySelectorAll('.cell:not(.black-cell)');
   let allFilled = true, allCorrect = true;
@@ -127,13 +123,10 @@ export async function checkAnswers() {
     if (!username || username.trim() === "") {
       username = "anonymous";
     }
-    //const username = gameState.username || "Anonymous";
+
     await saveToLeaderboard(username.trim(), time, gameState.puzzleId);
     await loadLeaderboard(gameState.puzzleId);
     document.getElementById('myForm').style.display = 'block';
-    
-    //alert(`🎉 Puzzle Solved in ${time}! Great job ${username}!`);
-
     document.getElementById('congrats-message').innerHTML = ` ⊹ ₊  ⁺‧₊˚ ♡ ପ(๑•ᴗ•๑)ଓ ♡˚₊‧⁺ ₊ ⊹ Congratulations ${username}! You solved the puzzle in ${textTime} ٩(ˊᗜˋ )و`;
 
     inputs.forEach(i => i.style.color = '#3f7b62');
@@ -199,46 +192,13 @@ export async function loadLeaderboard(puzzleID) {
   });
 }
 
-//== ==//
-
-function setCurrentClue(row, col, direction) {
-  // Reset the 'data-current' attribute for all clues
-  const allClues = document.querySelectorAll('#across-clues li, #down-clues li');
-  allClues.forEach(clue => clue.dataset.current = 'false');
-
-  // Find the clue for the current cell
-  const currentClueAcross = document.querySelector(`#clue-across-${row}-${col}`);
-  const currentClueDown = document.querySelector(`#clue-down-${row}-${col}`);
-
-  // Set 'data-current' to 'true' for the corresponding clues
-  if (currentClueAcross) currentClueAcross.dataset.current = 'true';
-  if (currentClueDown) currentClueDown.dataset.current = 'true';
-}
-
-export function toggleClues(show) {
-  const acrossClues = document.querySelectorAll('#across-clues li');
-  const downClues = document.querySelectorAll('#down-clues li');
-
-  acrossClues.forEach(clue => {
-    clue.style.visibility = show ? 'visible' : 'hidden';
-  });
-
-  downClues.forEach(clue => {
-    clue.style.visibility = show ? 'visible' : 'hidden';
-  });
-}
-
-//==CONTROLS==//
+//== PUZZLE TOOLBAR CONTROLS ==//
 document.getElementById('play-button').addEventListener('click', function() {
   const icon = document.getElementById('icon');
   if (isTimerRunning()) {
     stopTimer();
-    //toggleClues(false); 
-    //icon.innerHTML = '&#9658;';
   } else {
     startTimer();
-    //toggleClues(true);
-    //icon.innerHTML = "&#10074;&#10074;";
   }
 });
 
